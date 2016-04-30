@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: rezept.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: rezept.ui;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: rezept,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.example.domainmodel.ui.quickfix,
+ org.example.domainmodel.ui.contentassist,
+ org.example.domainmodel.ui.internal,
+ org.example.domainmodel.ui.contentassist.antlr,
+ org.example.domainmodel.ui.contentassist.antlr.internal
+Bundle-Activator: org.example.domainmodel.ui.internal.DomainmodelActivator
