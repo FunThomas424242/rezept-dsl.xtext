@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="rezept"
-            id="org.example.domainmodel.Domainmodel"
-            name="Domainmodel Editor">
+            id="com.github.funthomas424242.language.Rezept"
+            name="Rezept Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                    definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.example.domainmodel.Domainmodel.validate">
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="com.github.funthomas424242.language.Rezept.validate">
          <activeWhen>
             <reference
-                    definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                    definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+				<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="org.example.domainmodel.Domainmodel.XtextEditor.opened" />
+            		<reference definitionId="com.github.funthomas424242.language.Rezept.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.example.domainmodel.Domainmodel.Editor.opened">
+        <definition id="com.github.funthomas424242.language.Rezept.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.example.domainmodel.Domainmodel" 
+                        value="com.github.funthomas424242.language.Rezept" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="org.example.domainmodel.Domainmodel.XtextEditor.opened">
+        <definition id="com.github.funthomas424242.language.Rezept.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.example.domainmodel.Domainmodel" 
+                        value="com.github.funthomas424242.language.Rezept" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.example.domainmodel.Domainmodel"
-            name="Domainmodel">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="com.github.funthomas424242.language.Rezept"
+            name="Rezept">
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
         </page>
         <page
-            category="org.example.domainmodel.Domainmodel"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.example.domainmodel.Domainmodel.coloring"
+            category="com.github.funthomas424242.language.Rezept"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="com.github.funthomas424242.language.Rezept.coloring"
             name="Syntax Coloring">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
         </page>
         <page
-            category="org.example.domainmodel.Domainmodel"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.example.domainmodel.Domainmodel.templates"
+            category="com.github.funthomas424242.language.Rezept"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="com.github.funthomas424242.language.Rezept.templates"
             name="Templates">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.example.domainmodel.Domainmodel"
-            name="Domainmodel">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="com.github.funthomas424242.language.Rezept"
+            name="Rezept">
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="org.example.domainmodel.ui.keyword_Domainmodel"
-            label="Domainmodel"/>
+            id="com.github.funthomas424242.language.ui.keyword_Rezept"
+            label="Rezept"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.example.domainmodel.Domainmodel.validate"
+            id="com.github.funthomas424242.language.Rezept.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.example.domainmodel.Domainmodel.validate"
+                 commandId="com.github.funthomas424242.language.Rezept.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                    definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+                	<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+                	<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="org.example.domainmodel.Domainmodel.XtextEditor.opened" />
+	            		<reference definitionId="com.github.funthomas424242.language.Rezept.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                	<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -197,11 +197,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                    definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -212,36 +212,36 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="rezept">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="rezept">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for org.example.domainmodel.Domainmodel -->
+	<!-- marker definitions for com.github.funthomas424242.language.Rezept -->
 	<extension
-	        id="domainmodel.check.fast"
-	        name="Domainmodel Problem"
+	        id="rezept.check.fast"
+	        name="Rezept Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.fast"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
-	        id="domainmodel.check.normal"
-	        name="Domainmodel Problem"
+	        id="rezept.check.normal"
+	        name="Rezept Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.normal"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
-	        id="domainmodel.check.expensive"
-	        name="Domainmodel Problem"
+	        id="rezept.check.expensive"
+	        name="Rezept Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
@@ -250,7 +250,7 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
             fileExtensions="rezept"
             >
       </participant>
@@ -258,21 +258,21 @@
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="org.example.domainmodel.Domainmodel"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.example.domainmodel.Domainmodel.compiler.preferencePage"
+            category="com.github.funthomas424242.language.Rezept"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="com.github.funthomas424242.language.Rezept.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.example.domainmodel.Domainmodel"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.example.domainmodel.Domainmodel.compiler.propertyPage"
+            category="com.github.funthomas424242.language.Rezept"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="com.github.funthomas424242.language.Rezept.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+            <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -283,20 +283,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="org.example.domainmodel.Domainmodel.OpenGeneratedCode"
+				id="com.github.funthomas424242.language.Rezept.OpenGeneratedCode"
 				style="push">
 					<visibleWhen checkEnabled="false">
-						<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+						<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened" />
 					</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 				<activeWhen>
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened" />
+					<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened" />
 				</activeWhen>
 		</handler>
 	</extension>
@@ -305,11 +305,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -329,33 +329,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.example.domainmodel.Domainmodel.Editor.opened"/>
+					<reference definitionId="com.github.funthomas424242.language.Rezept.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for org.example.domainmodel.Domainmodel -->
+    <!-- quickfix marker resolution generator for com.github.funthomas424242.language.Rezept -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.example.domainmodel.ui.domainmodel.check.fast">
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="com.github.funthomas424242.language.ui.rezept.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.example.domainmodel.ui.domainmodel.check.normal">
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="com.github.funthomas424242.language.ui.rezept.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.example.domainmodel.ui.domainmodel.check.expensive">
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="com.github.funthomas424242.language.ui.rezept.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -365,11 +365,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+					definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -381,7 +381,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.example.domainmodel.Domainmodel.Editor.opened">
+                     definitionId="com.github.funthomas424242.language.Rezept.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -389,29 +389,29 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="org.example.domainmodel.Domainmodel"
-	        class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.example.domainmodel.Domainmodel.refactoring"
+	        category="com.github.funthomas424242.language.Rezept"
+	        class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="com.github.funthomas424242.language.Rezept.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="org.example.domainmodel.ui.keyword_Domainmodel"/>
+	        <keywordReference id="com.github.funthomas424242.language.ui.keyword_Rezept"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.example.domainmodel.Domainmodel.compare.contentViewers"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="com.github.funthomas424242.language.Rezept.compare.contentViewers"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="rezept">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.example.domainmodel.Domainmodel.compare.contentMergeViewers"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="rezept" label="Domainmodel Compare">
+    <viewer id="com.github.funthomas424242.language.Rezept.compare.contentMergeViewers"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="rezept" label="Rezept Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.example.domainmodel.Domainmodel.editors.documentProviders"
-            class="org.example.domainmodel.ui.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="com.github.funthomas424242.language.Rezept.editors.documentProviders"
+            class="com.github.funthomas424242.language.ui.RezeptExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="rezept">
     </provider>
   </extension>

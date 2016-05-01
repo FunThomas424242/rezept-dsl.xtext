@@ -18,9 +18,10 @@ Require-Bundle: rezept,
  org.eclipse.compare
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.example.domainmodel.ui.quickfix,
- org.example.domainmodel.ui.contentassist,
- org.example.domainmodel.ui.internal,
- org.example.domainmodel.ui.contentassist.antlr,
- org.example.domainmodel.ui.contentassist.antlr.internal
-Bundle-Activator: org.example.domainmodel.ui.internal.DomainmodelActivator
+Export-Package: 
+ com.github.funthomas424242.language.ui.quickfix,
+ com.github.funthomas424242.language.ui.contentassist,
+ com.github.funthomas424242.language.ui.internal,
+ com.github.funthomas424242.language.ui.contentassist.antlr,
+ com.github.funthomas424242.language.ui.contentassist.antlr.internal
+Bundle-Activator: com.github.funthomas424242.language.ui.internal.RezeptActivator

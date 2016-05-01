@@ -61,7 +61,7 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>file://${project.basedir}/src/org/example/domainmodel/GenerateDomainmodel.mwe2</argument>
+						<argument>file://${project.basedir}/src/com/github/funthomas424242/language/GenerateRezept.mwe2</argument>
 						<argument>
 							-p
 						</argument>

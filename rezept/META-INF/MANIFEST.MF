@@ -16,15 +16,16 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.example.domainmodel,
- org.example.domainmodel.services,
- org.example.domainmodel.domainmodel,
- org.example.domainmodel.domainmodel.impl,
- org.example.domainmodel.domainmodel.util,
- org.example.domainmodel.serializer,
- org.example.domainmodel.parser.antlr,
- org.example.domainmodel.parser.antlr.internal,
- org.example.domainmodel.validation,
- org.example.domainmodel.scoping,
- org.example.domainmodel.generator,
- org.example.domainmodel.formatting
+Export-Package: com.github.funthomas424242.language,
+ com.github.funthomas424242.language.formatting,
+ com.github.funthomas424242.language.generator,
+ com.github.funthomas424242.language.parser.antlr,
+ com.github.funthomas424242.language.parser.antlr.internal,
+ com.github.funthomas424242.language.rezept,
+ com.github.funthomas424242.language.rezept.impl,
+ com.github.funthomas424242.language.rezept.util,
+ com.github.funthomas424242.language.scoping,
+ com.github.funthomas424242.language.serializer,
+ com.github.funthomas424242.language.services,
+ com.github.funthomas424242.language.validation
+ 

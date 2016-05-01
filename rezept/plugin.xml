@@ -5,9 +5,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.example.org/domainmodel/Domainmodel" 
-       class = "org.example.domainmodel.domainmodel.DomainmodelPackage"
-       genModel = "model/generated/Domainmodel.genmodel" /> 
+       uri = "http://www.github.com/funthomas424242/language/Rezept" 
+       class = "com.github.funthomas424242.language.rezept.RezeptPackage"
+       genModel = "model/generated/Rezept.genmodel" /> 
 	
   </extension>
 
