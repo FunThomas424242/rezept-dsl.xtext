@@ -5,7 +5,7 @@
 
 	<parent>
 		<groupId>gh.funthomas424242.dsl</groupId>
-		<artifactId>org.example.domainmodel.parent</artifactId>
+		<artifactId>rezept.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
