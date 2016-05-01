@@ -3,6 +3,12 @@ Realisierung der Sprache Rezept mittels einer auf Xtext basierenden DSL.
 
 [![Build Status](https://travis-ci.org/FunThomas424242/rezept-dsl.xtext.svg?branch=master)](https://travis-ci.org/FunThomas424242/rezept-dsl.xtext)
 
+## Development
+
+* Eclipse IDE available as yatta profile https://marketplace.yatta.de/profiles/gyXP
+
+
+
 ## Quellen
 
 * http://download.eclipse.org/acceleo/updates/releases/3.6 (Update Site Acceleo)
