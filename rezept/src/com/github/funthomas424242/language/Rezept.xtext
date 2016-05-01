@@ -2,8 +2,46 @@ grammar com.github.funthomas424242.language.Rezept with org.eclipse.xtext.common
 
 generate rezept "http://www.github.com/funthomas424242/language/Rezept"
  
+
+ 
 Rezept:
-    (elements+=AbstractElement)*;
+	 ProjektBeschreibung | Rezeptliste | Produktliste ;
+ 
+
+ProjektBeschreibung:     
+ 'Rezeptsammlung' id=QualifiedName '{'
+	 	'Titel' ':' titel=STRING '.'
+ '}';
+ 
+ Produktliste:
+ 	'Produktliste' name=QualifiedName ';' 
+ 	// imports*
+ 	(rezepte+=ProduktBlatt)+
+ ;
+ 
+ ProduktBlatt:
+ 	'Produkt' name=Name '{'
+	 	'Verpackung' verpackung=Name '.'
+ '}';
+ 
+ Rezeptliste:
+ 	'Rezeptliste' name=QualifiedName ';' 
+ 	// imports*
+ 	(rezepte+=RezeptBlatt)+
+ ;
+ 
+ RezeptBlatt:
+ 	'Rezept' id=QualifiedName '{'
+	 	'Titel' ':' titel=STRING '.'
+ '}';
+ 
+ Name:
+ 	BEZEICHNER
+ ;
+ 
+ 
+ terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
+ 
  
 PackageDeclaration:
     'package' name=QualifiedName '{'
@@ -14,7 +52,7 @@ AbstractElement:
     PackageDeclaration | Type | Import;
  
 QualifiedName:
-    ID ('.' ID)*;
+    BEZEICHNER ('.' BEZEICHNER)*;
  
 Import:
     'import' importedNamespace=QualifiedNameWithWildcard;
@@ -35,5 +73,8 @@ Entity:
  
 Feature:
     (many?='many')? name=ID ':' type=[Type|QualifiedName];
-    
-    
+
+
+  
+  
+ 

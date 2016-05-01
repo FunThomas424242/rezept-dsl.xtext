@@ -1,4 +1,4 @@
-package com.github.funthomas424242.language.rezept.tests
+package com.github.funthomas424242.language.tests
 
 import com.github.funthomas424242.language.RezeptInjectorProvider
 import com.github.funthomas424242.language.rezept.Rezept
