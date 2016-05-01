@@ -17,27 +17,34 @@ class SimpleParsingTest {
 	
 	@Inject extension ParseHelper<Rezept>
 	
-	@Test def void testParse() {
+	@Test def void testParseValidBuch() {
 		val model = '''
-			package mypack {
-			    import toimport
-			    
-			   datatype Kennzeichen  
-			   datatype Name
-			   
-			   entity Fahrzeug { 
-			       hersteller:  Name
-			   }
-			   
-			   entity Auto extends Fahrzeug {
-			       nummer:Kennzeichen
-			       
-			   }
-			   
-			    
+			Rezeptsammlung Anhaltinische#Küche {
+			    Titel: "Kochbuch des Mittelalters".
+			}
+		'''.parse
+		assertTrue(model.element.booleanValue)
+	}
+	
+	@Test def void testParseValidRezeptliste() {
+		val model = '''
+			Rezeptliste Mittagsgerichte ;
+			Rezept Bratkartoffeln {
+			    Titel : "Bratkartoffeln mit Ei" . 
+			}
+		'''.parse
+		assertTrue(model.element.booleanValue)
+	}
+	
+	@Test def void testParseValidProduktliste() {
+		val model = '''
+			Produktliste Aldi.Süd ; 
+			
+			Produkt Kaffee 
+			{ Verpackung Tüte .
 			    
 			}
 		'''.parse
-		assertEquals(1, model.elements.size)
+		assertTrue(model.element.booleanValue)
 	}
 }

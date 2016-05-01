@@ -5,7 +5,7 @@ generate rezept "http://www.github.com/funthomas424242/language/Rezept"
 
  
 Rezept:
-	 ProjektBeschreibung | Rezeptliste | Produktliste ;
+	element ?= (ProjektBeschreibung | Rezeptliste | Produktliste );
  
 
 ProjektBeschreibung:     
