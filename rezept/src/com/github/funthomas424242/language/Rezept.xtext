@@ -5,13 +5,54 @@ generate rezept "http://www.github.com/funthomas424242/language/Rezept"
 
  
 Rezept:
-	element ?= (ProjektBeschreibung | Rezeptliste | Produktliste );
+	projectBeschreibung = ProjektBeschreibung | rezeptListe=Rezeptliste | produktListe=Produktliste ;
  
 
 ProjektBeschreibung:     
- 'Rezeptsammlung' id=QualifiedName '{'
-	 	'Titel' ':' titel=STRING '.'
- '}';
+ 'Rezeptsammlung' '{'
+ 		'groupId' '=' groupId=STRING ';'
+ 		'artifactId' '=' artifactId=STRING ';'
+ 		'version' '=' version=STRING ';'
+ 		'Media Folder' ':' resourcesDir=STRING ';'
+	 	('siteURL' '=' siteURL=STRING ';')?
+ '}' buch=BuchBeschreibung 
+ ;
+ 
+ BuchBeschreibung:
+ 	'Buch' '{'
+ 	(imports+=RezeptImport)* 
+ 	'Titel:' titel=STRING ';'
+ 	(autoren+=Autor)+
+ 	('Vorwort:' vorwort=STRING 	(absatz+=Absatz)* )?
+ 	(lizenz=Lizenz)?
+ 	('Veröffentlicht am:' datumPublished=DATUM '.')?
+ 	'}'
+ ;
+ 
+ Absatz:
+ 	'Absatz:' 
+ 	(titel=HEADER)?
+ 	text=STRING
+ ;
+ 
+ Autor:
+ 	'Autor:' '{'
+ 	'Vorname:' vorname=STRING
+ 	'Nachname:' nachname=STRING
+ 	('Organisation:' organisationsName=STRING)?
+ 	'ModifikationsNotiz:' modifikationsNotiz=STRING
+ 	'}'
+ ;
+ 
+ Lizenz:
+ 	'Lizenzhinweis:' hinweis=STRING
+ 	('Lizenztext:' text=STRING)?
+ ;
+ 	
+ RezeptImport:
+ 	'import rezepte' importedResource=STRING ';'	
+ ;
+ 
  
  Produktliste:
  	'Produktliste' name=QualifiedName ';' 
@@ -41,7 +82,11 @@ ProjektBeschreibung:
  
  
  terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
- 
+ terminal DATUM : ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9')('0'..'9') ('0'..'9');
+ terminal HEADER :
+			'==' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'=')  )+ '==' |
+			'--' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'-')  )+ '--'
+			;
  
 PackageDeclaration:
     'package' name=QualifiedName '{'
