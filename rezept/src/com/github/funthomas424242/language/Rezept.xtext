@@ -9,7 +9,7 @@ Rezept:
  
 
 ProjektBeschreibung:     
- 'Rezeptsammlung' '{'
+ 'RezeptSammlung' '{'
  		'groupId' '=' groupId=STRING ';'
  		'artifactId' '=' artifactId=STRING ';'
  		'version' '=' version=STRING ';'
@@ -55,15 +55,26 @@ ProjektBeschreibung:
  
  
  Produktliste:
- 	'Produktliste' name=QualifiedName ';' 
+ 	'Produktliste' name=STRING ';' 
  	//(imports
  	(rezepte+=ProduktBlatt)+
  ;
  
  ProduktBlatt:
- 	'Produkt' name=Name '{'
-	 	'Verpackung' verpackung=Name '.'
+ 	'Produkt' name=STRING '{'
+	 ('Verpackung:' verpackung=Verpackung '.')?
+	 menge=BestimmteMenge
+	 ('EAN:' ean=STRING '.')?
+	 ('UBA:' uba=STRING '.')?
+	 preis=Preis?
+	 ('Händler:' haendler=STRING '.')?
+	 ('Hersteller:' hersteller=STRING '.')?
+	 'Letzte Änderung:' datumLetzteAenderung=DATUM '.'
  '}';
+ 
+ Preis:
+ 	'Preis:' betrag=STRING waehrung=STRING '.'
+ ;
  
  Rezeptliste:
  	'Rezeptliste' name=STRING ';' 
@@ -84,16 +95,85 @@ ProjektBeschreibung:
 	 	('Ausreichend für' personen=INT 'Personen.')? 	
 	 	'Letzte Änderung:' letzteAenderung=DATUM '.'
 	 	(tags+=Tag)+
-	 	// TODO
+	 	(produkte+=ProduktRef)*
+	 	(zutaten+=Zutat)+
+	 	(schritte+=Arbeitsschritt)+
+	 	'--Zusatzinformationen--'
+	 	(notizen+=Notiz)*
+	 	(bilder+=Bild)*
  '}';
  
+ Arbeitsschritt:
+ 	'Aktion:' beschreibung=STRING 
+ 	(notiz=Notiz)?
+ ;
+ 
+ Notiz:
+ 	Tipp | Kommentar | Anmerkung
+ ;
+ 
+ Tipp:
+ 	'Tipp:' text=STRING
+ ;
+ 
+ Kommentar:
+ 	'Kommentar:' text=STRING
+ ;
+ 
+ Anmerkung:
+ 	'Anmerkung:' text=STRING
+ ;
+ 
+ Bild:
+ 	'Bild:' ablageort=Ablageort
+ 	('Text:' beschreibung=STRING)?
+ 	('Lizenz:' lizenz=STRING)
+ 	('Urheber:' urheber=STRING)?
+ 	'.'
+ ;
+ 
+ Ablageort:
+ 	Internetpfad | Lokalerpfad
+ ;
+ 
+ Internetpfad:
+ 	'URL:' url=STRING
+ ;
+ 
+ Lokalerpfad:
+ 	'FileName:' fileName=STRING
+ ;
+ 
+ ProduktRef:
+ 	'ProduktRef:' produkt=STRING
+ 	'Menge:' anzahl=STRING
+ 	'mal.'
+ ;
+ 
+ Zutat:
+ 	'Zutat:' name=STRING menge=Menge 
+ ;
+ 
+ Menge:
+ 	BestimmteMenge | UnbestimmteMenge
+ ;
+ 
+ BestimmteMenge:
+ 	'Menge:' betrag=STRING details=STRING? einheit=Masseinheit '.'
+ ;
+ 
+ UnbestimmteMenge:
+ 	menge=UnbestimmteMengenangabe '.'
+ ;
+
  Quelle:
  	Literaturquelle | Personenquelle
  ;
  
  Literaturquelle:
- 	'übernommen' ('verändert'| 'unverändert') 'aus' beschreibung=STRING '.'
+ 	'übernommen' modifikation=Modifikationsart 'aus' beschreibung=STRING '.'
  ;
+ 
  
  Personenquelle:
  	'überliefert' 'von' personenBeschreibung=STRING '.'
@@ -119,6 +199,43 @@ ProjektBeschreibung:
  	BEZEICHNER
  ;
  
+QualifiedName:
+   BEZEICHNER ('.' BEZEICHNER)*
+ ;
+ 
+ enum Modifikationsart:
+ 	MODIFIZIERT='"verändert"' | UNVERAENDERT='"unverändert"'
+ ;
+ 
+ enum Masseinheit:
+ 	  KG='"kg"'
+ 	| G='"g"' 
+ 	| ML='"ml"'
+ 	| L='"L"'
+ 	| STUECK='"Stück"'
+ 	| EL='"Esslöffel"'
+ 	| TL='"Teelöffel"'
+ 	| TUETEN='"Tüte(n)"'
+ 	| PCKCH='"Päckchen"'
+ 	| SCHEIBEN='"Scheibe(n)"'
+ 	| DOSE='"Dose(n)"'
+ ;
+ 
+ enum UnbestimmteMengenangabe:
+ 	  NACH_BEDARF='"nach Bedarf"'
+ 	| ETWAS='"etwas"'
+ 	| WENIG='"wenig"'
+ ;
+ 
+ enum Verpackung:
+ 	  GLAS='"Glas"'
+ 	| DOSE='"Dose"'
+ 	| TUETE='"Tüte"'
+ 	| NETZ='"Netz"'
+ 	| PCKG='"Packung"'
+ 	| PCKCH='"Päckchen"'
+ 	| BECHER='"Becher"'
+ ;
  
  terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
  terminal DATUM : ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9')('0'..'9') ('0'..'9');
@@ -127,36 +244,6 @@ ProjektBeschreibung:
 			'--' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'-')  )+ '--'
 			;
  
-PackageDeclaration:
-    'package' name=QualifiedName '{'
-        (elements+=AbstractElement)*
-    '}';
- 
-AbstractElement:
-    PackageDeclaration | Type | Import;
- 
-QualifiedName:
-    BEZEICHNER ('.' BEZEICHNER)*;
- 
-Import:
-    'import' importedNamespace=QualifiedNameWithWildcard;
-  
-QualifiedNameWithWildcard:
-    QualifiedName '.*'?;
-  
-Type:
-    DataType | Entity;
-  
-DataType:
-    'datatype' name=ID;
- 
-Entity:
-    'entity' name=ID ('extends' superType=[Entity|QualifiedName])? '{'
-        (features+=Feature)*
-    '}';
- 
-Feature:
-    (many?='many')? name=ID ':' type=[Type|QualifiedName];
 
 
   
