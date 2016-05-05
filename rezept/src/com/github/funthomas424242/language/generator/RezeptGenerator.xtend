@@ -16,9 +16,9 @@ import org.eclipse.xtext.generator.IGenerator
 class RezeptGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (e : resource.allContents.toIterable.filter(ProjektBeschreibung)) {
-			fsa.generateFile(POMGenerator.getPOMFileName(e), POMGenerator.createPOMContent(e))
-			fsa.generateFile(getDbkFileName(e,"book.dbk"), BookGenerator.createBookContent(e))
+		for (project : resource.allContents.toIterable.filter(ProjektBeschreibung)) {
+			fsa.generateFile(POMGenerator.getPOMFileName(project), POMGenerator.createPOMContent(project))
+			fsa.generateFile(getDbkFileName(project,"book.dbk"), BookGenerator.createBookContent(fsa,project))
 		}
 	}
 	
