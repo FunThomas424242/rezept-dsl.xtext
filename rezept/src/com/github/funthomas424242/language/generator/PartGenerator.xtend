@@ -4,6 +4,7 @@ import com.github.funthomas424242.language.rezept.ProjektBeschreibung
 import com.github.funthomas424242.language.rezept.RezeptImport
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.language.rezept.Rezeptliste
 
 /**
  * Generates code from your model files on save.
@@ -13,8 +14,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class PartGenerator {
 	
 
-	def static createPart(IFileSystemAccess fsa,ProjektBeschreibung project, EList<RezeptImport> liste , int parentIndex) '''
+	def static createPart(IFileSystemAccess fsa,ProjektBeschreibung project, Rezeptliste liste , int parentIndex) '''
 	
+	«liste.name»
 	<part>
 	    <title>[liste.name/]</title>
 		[for (rezept : Rezept | liste.rezepte)]

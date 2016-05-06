@@ -5,7 +5,7 @@ generate rezept "http://www.github.com/funthomas424242/language/Rezept"
 
  
 Rezept:
-	projectBeschreibung = ProjektBeschreibung | rezeptListe=Rezeptliste | produktListe=Produktliste ;
+	projectBeschreibung = ProjektBeschreibung | rezeptListe = Rezeptliste | produktListe= Produktliste;
  
 
 ProjektBeschreibung:     
@@ -50,7 +50,7 @@ ProjektBeschreibung:
  ;
  	
  RezeptImport:
- 	'import rezepte' importedResource=STRING ';'	
+ 	'import rezepte' importURI = STRING ';'	
  ;
  
  

@@ -1,6 +1,12 @@
 package com.github.funthomas424242.language.generator
 
 import com.github.funthomas424242.language.rezept.ProjektBeschreibung
+import com.github.funthomas424242.language.rezept.Rezept
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.mwe2.language.mwe2.Import
 import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**
@@ -67,12 +73,26 @@ class BookGenerator {
 	<toc/>
 	
 	«FOR imp : project.buch.imports»
+		«val Rezept rezept = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezept»
 		«val importIndex = project.buch.imports.indexOf(imp)»
-		«PartGenerator.createPart(fsa,project,project.buch.imports,importIndex)»
+		«PartGenerator.createPart(fsa,project,rezept.rezeptListe,importIndex)»
 	«ENDFOR»
 	
 	«AnhangLizenzGenerator.createLizenzAnhang(fsa,project)»
 	'''
 	
+	private def static EObject resourceToEObject(Resource resource){
+		return resource?.allContents?.head;
+	}
+	
+	private def static Resource openImport(Resource contextResource, String importedURIAsString){
+		val URI contextURI=contextResource?.getURI
+		val URI importedURI=URI?.createURI(importedURIAsString)
+		val URI resolvedURI=importedURI?.resolve(contextURI)
+		
+		val ResourceSet contextResourceSet = contextResource?.resourceSet
+		val Resource resource = contextResourceSet?.getResource(resolvedURI, true)
+		return resource
+	}
 	
 }

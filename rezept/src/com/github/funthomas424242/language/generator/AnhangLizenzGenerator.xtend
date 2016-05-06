@@ -485,8 +485,7 @@ class AnhangLizenzGenerator {
 		              «project.buch.lizenz.text» 
 			</programlisting>
 		</appendix>
-	«ENDIF»
-	  
+	«ENDIF»  
 	</book>
 	'''
 	
