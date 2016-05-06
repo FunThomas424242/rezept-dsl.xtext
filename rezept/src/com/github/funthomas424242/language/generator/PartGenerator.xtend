@@ -1,10 +1,14 @@
 package com.github.funthomas424242.language.generator
 
+import com.github.funthomas424242.language.rezept.BenutzerTag
+import com.github.funthomas424242.language.rezept.DiaetTag
 import com.github.funthomas424242.language.rezept.ProjektBeschreibung
-import com.github.funthomas424242.language.rezept.RezeptImport
-import org.eclipse.emf.common.util.EList
-import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.language.rezept.RezeptBlatt
 import com.github.funthomas424242.language.rezept.Rezeptliste
+import com.github.funthomas424242.language.rezept.StoffTag
+import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.language.rezept.Literaturquelle
+import com.github.funthomas424242.language.rezept.Personenquelle
 
 /**
  * Generates code from your model files on save.
@@ -16,23 +20,17 @@ class PartGenerator {
 
 	def static createPart(IFileSystemAccess fsa,ProjektBeschreibung project, Rezeptliste liste , int parentIndex) '''
 	
-	«liste.name»
 	<part>
-	    <title>[liste.name/]</title>
-		[for (rezept : Rezept | liste.rezepte)]
-		    [let rezeptIndex : Integer = liste.rezepte->indexOf(rezept)]
-				[if (rezept.oclIsKindOf(Rezept))]
-					<xi:include href="Rezept[parentIndex+'_'+rezeptIndex.toString()/].dbk" />
-					[createSection(project,rezept.oclAsType(Rezept), parentIndex+'_'+rezeptIndex.toString()) /]
-				[/if]
-			[/let]
-		[/for]
+	    <title>«liste.name»</title>
+	    «FOR rezept : liste.rezepte»
+	    	«val rezeptIndex = liste.rezepte.indexOf(rezept)»
+				<xi:include href="Rezept«parentIndex+'_'+rezeptIndex».dbk" />
+				«fsa.generateFile(RezeptGenerator.getDbkFileName(project, parentIndex+'_'+rezeptIndex+".dbk"),
+				createChapter(fsa,project,rezept, parentIndex+" "+rezeptIndex))»
+		«ENDFOR»
 	</part>
 	'''
-	def static createChapter(IFileSystemAccess fsa,ProjektBeschreibung project, EList<RezeptImport> liste , int parentIndex) '''
-	
-	[template public createSection(project: ProjektBeschreibung, rezept : Rezept, rezeptIndex : String )]
-		[file (projectPath(project)+'/src/main/docbkx/Rezept'+rezeptIndex+'.dbk', false, 'UTF-8')]
+	def static createChapter(IFileSystemAccess fsa,ProjektBeschreibung project, RezeptBlatt rezept , String rezeptIndex) '''
 	<?xml version="1.0" encoding="UTF-8"?>
 	<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
 	         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -42,7 +40,7 @@ class PartGenerator {
 	         xmlns:ns3="http://www.w3.org/1999/xhtml"
 	         xmlns:db="http://docbook.org/ns/docbook">
 	 
-	<title>[rezept.titel/]</title>
+	<title>«rezept.titel»</title>
 	
 	<para>
 		<variablelist>
@@ -50,46 +48,38 @@ class PartGenerator {
 	        <term>Tags:</term>
 			<listitem>
 		    	<para>
-				[for (tag : Tag | rezept.tags)]
-					[if (rezept.tags->indexOf(tag) > 1)]
-						,
-					[/if]
-					[if (tag.oclIsKindOf(BenutzerTag))]
-						[let curTag : BenutzerTag = tag.oclAsType(BenutzerTag)]
-							[curTag.bezeichnung /]
-						[/let]
-					[/if]
-					[if (tag.oclIsKindOf(StoffTag))]
-						[let curTag : StoffTag = tag.oclAsType(StoffTag)]
-							[curTag.stoff /]
-						[/let]
-					[/if]
-					[if (tag.oclIsKindOf(DiaetTag))]
-						[let curTag : DiaetTag = tag.oclAsType(DiaetTag)]
-							[curTag.diaet /]
-						[/let]
-					[/if]
-				[/for]
+		    	«FOR tag : rezept.tags»
+					«IF rezept.tags.indexOf(tag)>0»
+				   			,
+					«ENDIF»
+					«IF tag instanceof BenutzerTag»
+						«tag.bezeichnung»
+					«ENDIF»
+					«IF tag instanceof StoffTag»
+						«tag.stoff»
+					«ENDIF»
+					«IF tag instanceof DiaetTag»
+						«tag.diaet»
+					«ENDIF»
+				«ENDFOR»
 				</para>
 			</listitem>
 	      </varlistentry>
 		  <varlistentry>
 		    <term>Quelle:</term>
 			<listitem><para>
-					[if (rezept.quelle->isEmpty())]
+					«IF rezept.quelle==null»
 						nicht angegeben
-					[else]
-						[if (rezept.quelle.oclIsKindOf(Literaturquelle))]
-							[let quelle : Literaturquelle = rezept.quelle.oclAsType(Literaturquelle)]
-								[quelle.modifikationsArt/] übernommen aus: [quelle.beschreibung/]
-							[/let]
-						[/if]
-						[if (rezept.quelle.oclIsKindOf(Personenquelle))]
-							[let quelle : Personenquelle = rezept.quelle.oclAsType(Personenquelle)]
-								überliefert von [quelle.personenBeschreibung/]
-							[/let]
-						[/if]
-					[/if]
+					«ELSE»
+						«IF rezept.quelle instanceof Literaturquelle»
+							«val literaturQuelle = rezept.quelle as Literaturquelle»
+							«literaturQuelle.modifikation» übernommen aus: «literaturQuelle.beschreibung»
+						«ENDIF»
+						«IF rezept.quelle instanceof Personenquelle»
+							«val personenQuelle = rezept.quelle as Personenquelle»
+							überliefert von «personenQuelle.personenBeschreibung»
+						«ENDIF»
+					«ENDIF»
 			</para></listitem>
 		  </varlistentry>
 	    </variablelist>

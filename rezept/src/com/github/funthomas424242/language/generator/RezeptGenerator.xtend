@@ -23,7 +23,7 @@ class RezeptGenerator implements IGenerator {
 	}
 	
 	
-	def getDbkFileName(ProjektBeschreibung project, String fileName) {
+	def static getDbkFileName(ProjektBeschreibung project, String fileName) {
 		return project.groupId+"."+project.artifactId+"/src/main/docbkx/"+fileName;
 	}
 	
