@@ -1,6 +1,6 @@
 package com.github.funthomas424242.language.generator
 
-import com.github.funthomas424242.language.rezept.ProjektBeschreibung
+import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
 
 /**
  * Generates code from your model files on save.
@@ -10,13 +10,13 @@ import com.github.funthomas424242.language.rezept.ProjektBeschreibung
 class POMGenerator{
 	
 	
-	def static getPOMFileName(ProjektBeschreibung project) {
+	def static getPOMFileName(RezeptbuchProjekt project) {
 		return project.groupId+"."+project.artifactId+"/pom.xml";
 	}
 	
 	
 	
-	def static createPOMContent(ProjektBeschreibung project) '''
+	def static createPOMContent(RezeptbuchProjekt project) '''
 	<?xml version="1.0" encoding="UTF-8"?>
 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">

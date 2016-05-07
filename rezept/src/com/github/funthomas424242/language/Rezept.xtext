@@ -4,11 +4,11 @@ generate rezept "http://www.github.com/funthomas424242/language/Rezept"
  
 
  
-Rezept:
-	projectBeschreibung = ProjektBeschreibung | rezeptListe = Rezeptliste | produktListe= Produktliste;
+Rezeptbuch:
+	project = RezeptbuchProjekt | rezept = Rezeptliste | produkte= Produktliste;
  
 
-ProjektBeschreibung:     
+RezeptbuchProjekt:     
  'RezeptSammlung' '{'
  		'groupId' '=' groupId=STRING ';'
  		'artifactId' '=' artifactId=STRING ';'
@@ -148,8 +148,8 @@ ProjektBeschreibung:
  
  ProduktRef:
  	'ProduktRef:' 
- 	refname=STRING  
- 	(produkt=[ProduktBlatt|STRING])?
+ 	//refname=STRING  
+ 	produkt=[ProduktBlatt|STRING]
  	'Menge:' anzahl=Float 'mal.' 
  ;
  

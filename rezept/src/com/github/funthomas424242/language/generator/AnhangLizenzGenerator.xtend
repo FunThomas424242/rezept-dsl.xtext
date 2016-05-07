@@ -1,6 +1,6 @@
 package com.github.funthomas424242.language.generator
 
-import com.github.funthomas424242.language.rezept.ProjektBeschreibung
+import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
 import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**
@@ -11,7 +11,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class AnhangLizenzGenerator {
 	
 
-	def static createLizenzAnhang(IFileSystemAccess fsa,ProjektBeschreibung project) '''
+	def static createLizenzAnhang(IFileSystemAccess fsa,RezeptbuchProjekt project) '''
 	
 	«IF project.buch.lizenz.text == null»
 	  <appendix>

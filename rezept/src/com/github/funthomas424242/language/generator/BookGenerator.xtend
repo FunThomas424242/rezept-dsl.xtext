@@ -1,7 +1,7 @@
 package com.github.funthomas424242.language.generator
 
-import com.github.funthomas424242.language.rezept.ProjektBeschreibung
-import com.github.funthomas424242.language.rezept.Rezept
+import com.github.funthomas424242.language.rezept.Rezeptbuch
+import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
@@ -16,7 +16,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class BookGenerator {
 	
 
-	def static createBookContent(IFileSystemAccess fsa,ProjektBeschreibung project) '''
+	def static createBookContent(IFileSystemAccess fsa,RezeptbuchProjekt project) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<book version="5.0" xmlns="http://docbook.org/ns/docbook"
 		      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -72,9 +72,9 @@ class BookGenerator {
 	<toc/>
 	
 	«FOR imp : project.buch.imports»
-		«val Rezept rezept = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezept»
+		«val Rezeptbuch rezeptbuch = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezeptbuch»
 		«val importIndex = project.buch.imports.indexOf(imp)»
-		«PartGenerator.createPart(fsa,project,rezept.rezeptListe,importIndex)»
+		«PartGenerator.createPart(fsa,project,rezeptbuch.rezept,importIndex)»
 	«ENDFOR»
 	
 	«AnhangLizenzGenerator.createLizenzAnhang(fsa,project)»

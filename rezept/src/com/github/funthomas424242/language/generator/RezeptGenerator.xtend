@@ -3,7 +3,7 @@
  */
 package com.github.funthomas424242.language.generator
 
-import com.github.funthomas424242.language.rezept.ProjektBeschreibung
+import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -16,14 +16,14 @@ import org.eclipse.xtext.generator.IGenerator
 class RezeptGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (project : resource.allContents.toIterable.filter(ProjektBeschreibung)) {
+		for (project : resource.allContents.toIterable.filter(RezeptbuchProjekt)) {
 			fsa.generateFile(POMGenerator.getPOMFileName(project), POMGenerator.createPOMContent(project))
 			fsa.generateFile(getDbkFileName(project,"book.dbk"), BookGenerator.createBookContent(fsa,project))
 		}
 	}
 	
 	
-	def static getDbkFileName(ProjektBeschreibung project, String fileName) {
+	def static getDbkFileName(RezeptbuchProjekt project, String fileName) {
 		return project.groupId+"."+project.artifactId+"/src/main/docbkx/"+fileName;
 	}
 	

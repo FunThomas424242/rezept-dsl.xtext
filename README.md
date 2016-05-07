@@ -11,6 +11,7 @@ Realisierung der Sprache Rezept mittels einer auf Xtext basierenden DSL.
 
 ## Quellen
 
+* https://christiandietrich.wordpress.com/2012/08/07/xtext-referencing-elements-of-one-dsl-from-another-dsl/
 * http://download.eclipse.org/acceleo/updates/releases/3.6 (Update Site Acceleo)
 * https://github.com/sbegaudeau/DSL-Scala-Generation/blob/master/plugins/org.obeonetwork.dsl.gen.scala/pom.xml (Acceleo pom.xml Beispiel)
 * https://wiki.eclipse.org/Acceleo/Maven

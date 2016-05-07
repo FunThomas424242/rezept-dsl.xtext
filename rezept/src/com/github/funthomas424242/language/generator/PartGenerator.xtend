@@ -3,16 +3,16 @@ package com.github.funthomas424242.language.generator
 import com.github.funthomas424242.language.rezept.BenutzerTag
 import com.github.funthomas424242.language.rezept.BestimmteMenge
 import com.github.funthomas424242.language.rezept.DiaetTag
+import com.github.funthomas424242.language.rezept.Internetpfad
 import com.github.funthomas424242.language.rezept.Literaturquelle
+import com.github.funthomas424242.language.rezept.Lokalerpfad
 import com.github.funthomas424242.language.rezept.Personenquelle
-import com.github.funthomas424242.language.rezept.ProjektBeschreibung
 import com.github.funthomas424242.language.rezept.RezeptBlatt
+import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
 import com.github.funthomas424242.language.rezept.Rezeptliste
 import com.github.funthomas424242.language.rezept.StoffTag
 import com.github.funthomas424242.language.rezept.UnbestimmteMenge
 import org.eclipse.xtext.generator.IFileSystemAccess
-import com.github.funthomas424242.language.rezept.Internetpfad
-import com.github.funthomas424242.language.rezept.Lokalerpfad
 
 /**
  * Generates code from your model files on save.
@@ -21,7 +21,7 @@ import com.github.funthomas424242.language.rezept.Lokalerpfad
  */
 class PartGenerator {
 
-	def static createPart(IFileSystemAccess fsa, ProjektBeschreibung project, Rezeptliste liste, int parentIndex) '''
+	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste, int parentIndex) '''
 		
 		<part>
 		    <title>«liste.name»</title>
@@ -34,7 +34,7 @@ class PartGenerator {
 		</part>
 	'''
 
-	def static createChapter(IFileSystemAccess fsa, ProjektBeschreibung project, RezeptBlatt rezept,
+	def static createChapter(IFileSystemAccess fsa, RezeptbuchProjekt project, RezeptBlatt rezept,
 		String rezeptIndex) '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
@@ -93,8 +93,8 @@ class PartGenerator {
 		
 		    <para><itemizedlist>
 		    «FOR zutat : rezept.zutaten»
-			<listitem>
-			        <para>
+		    	<listitem>
+		    	    <para>
 			«IF zutat.menge instanceof UnbestimmteMenge»
 				«val menge = zutat.menge as UnbestimmteMenge»	          		
 					«menge.menge»
@@ -117,7 +117,7 @@ class PartGenerator {
 		    <para><orderedlist>
 		    «FOR schritt : rezept.schritte»  
 			<listitem>
-			        <para>
+			   	<para>
 			«schritt.beschreibung»
 			 </para>
 			 «IF schritt.notiz != null»
@@ -156,17 +156,17 @@ class PartGenerator {
 					<listitem>
 					        <para>
 					«produktRef.anzahl» x
-					«IF produktRef.produkt == null»
-						«produktRef.refname»
-					«ELSE»
+«««					«IF produktRef.produkt == null»
+«««						«produktRef.refname»
+«««					«ELSE»
 						«produktRef.produkt.verpackung» «produktRef.produkt.name» 
 						«IF produktRef.produkt.menge instanceof BestimmteMenge»
 							«val menge = produktRef.produkt.menge as BestimmteMenge»
 							«menge.betrag» «menge.einheit»
 						«ENDIF»
-						</para>
-						    </listitem>
-					«ENDIF»
+«««					«ENDIF»
+					</para>
+					 </listitem>
 				«ENDFOR»
 				</itemizedlist></para>
 			«ENDIF»
