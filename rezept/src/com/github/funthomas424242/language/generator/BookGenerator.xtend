@@ -1,7 +1,7 @@
 package com.github.funthomas424242.language.generator
 
-import com.github.funthomas424242.language.rezept.Rezeptbuch
 import com.github.funthomas424242.language.rezept.RezeptbuchProjekt
+import com.github.funthomas424242.language.rezept.Rezeptdatei
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
@@ -72,9 +72,9 @@ class BookGenerator {
 	<toc/>
 	
 	«FOR imp : project.buch.imports»
-		«val Rezeptbuch rezeptbuch = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezeptbuch»
+		«val Rezeptdatei rezeptdatei = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezeptdatei»
 		«val importIndex = project.buch.imports.indexOf(imp)»
-		«PartGenerator.createPart(fsa,project,rezeptbuch.rezept,importIndex)»
+		«PartGenerator.createPart(fsa,project,rezeptdatei.rezept.rezepte,importIndex)»
 	«ENDFOR»
 	
 	«AnhangLizenzGenerator.createLizenzAnhang(fsa,project)»

@@ -2,10 +2,12 @@ grammar com.github.funthomas424242.language.Rezept with org.eclipse.xtext.common
 
 generate rezept "http://www.github.com/funthomas424242/language/Rezept"
  
-
+Rezeptdatei:
+	rezept=Dateiart
+;
  
-Rezeptbuch:
-	project = RezeptbuchProjekt | rezept = Rezeptliste | produkte= Produktliste;
+Dateiart:
+	projekt = RezeptbuchProjekt | rezepte = Rezeptliste | produkte= Produktliste;
  
 
 RezeptbuchProjekt:     
