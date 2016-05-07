@@ -27,31 +27,4 @@ class RezeptGenerator implements IGenerator {
 		return project.groupId+"."+project.artifactId+"/src/main/docbkx/"+fileName;
 	}
 	
-	
-	
-//	def compile(Rezept e) ''' 
-//        «IF e.eContainer.fullyQualifiedName != null»
-//            package «e.eContainer.fullyQualifiedName»;
-//        «ENDIF»
-//        
-//        public class «e.name» «IF e.superType != null
-//                »extends «e.superType.fullyQualifiedName» «ENDIF»{
-//            «FOR f : e.features»
-//                «f.compile»
-//            «ENDFOR»
-//        }
-//    '''
- 
-//    def compile(Feature f) '''
-//        private «f.type.fullyQualifiedName» «f.name»;
-//        
-//        public «f.type.fullyQualifiedName» get«f.name.toFirstUpper»() {
-//            return «f.name»;
-//        }
-//        
-//        public void set«f.name.toFirstUpper»(«f.type.fullyQualifiedName» «f.name») {
-//            this.«f.name» = «f.name»;
-//        }
-//    '''
-	
 }

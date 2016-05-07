@@ -56,24 +56,25 @@ ProjektBeschreibung:
  
  Produktliste:
  	'Produktliste' name=STRING ';' 
- 	//(imports
  	(rezepte+=ProduktBlatt)+
  ;
  
  ProduktBlatt:
- 	'Produkt' name=STRING '{'
-	 ('Verpackung:' verpackung=Verpackung '.')?
-	 menge=BestimmteMenge
-	 ('EAN:' ean=STRING '.')?
-	 ('UBA:' uba=STRING '.')?
-	 preis=Preis?
-	 ('Händler:' haendler=STRING '.')?
-	 ('Hersteller:' hersteller=STRING '.')?
-	 'Letzte Änderung:' datumLetzteAenderung=DATUM '.'
- '}';
+ 	{ProduktBlatt}
+ 	'Produkt' name=STRING 	'{'
+		 ('Verpackung:' verpackung=Verpackung '.')?
+		 menge=BestimmteMenge
+		 ('EAN:' ean=STRING '.')?
+		 ('UBA:' uba=STRING '.')?
+		 preis=Preis?
+		 ('Händler:' haendler=STRING '.')?
+		 ('Hersteller:' hersteller=STRING '.')?
+		 'Letzte Änderung:' datumLetzteAenderung=DATUM '.'
+	 	'}'
+ ;
  
  Preis:
- 	'Preis:' betrag=STRING waehrung=STRING '.'
+ 	'Preis:' betrag=Float waehrung=STRING '.'
  ;
  
  Rezeptliste:
@@ -83,11 +84,12 @@ ProjektBeschreibung:
  ;
  
  ProduktImport:
- 	'import produkte' importedResource=STRING ';'
+ 	'import produkte' importURI = STRING ';'	
  ;
  
  RezeptBlatt:
- 	'Rezept' id=STRING '{'
+ 	{RezeptBlatt}
+ 	'Rezept' name=STRING '{'
 	 	'Titel:' titel=STRING '.'
 	 	('Untertitel:' untertitel=STRING '.')?
 	 	'Kategorie:' kategorie=STRING '.'
@@ -145,9 +147,10 @@ ProjektBeschreibung:
  ;
  
  ProduktRef:
- 	'ProduktRef:' produkt=STRING
- 	'Menge:' anzahl=STRING
- 	'mal.'
+ 	'ProduktRef:' 
+ 	refname=STRING  
+ 	(produkt=[ProduktBlatt|STRING])?
+ 	'Menge:' anzahl=Float 'mal.' 
  ;
  
  Zutat:
@@ -159,7 +162,7 @@ ProjektBeschreibung:
  ;
  
  BestimmteMenge:
- 	'Menge:' betrag=STRING details=STRING? einheit=Masseinheit '.'
+ 	'Menge:' betrag=Float details=STRING? einheit=Masseinheit '.'
  ;
  
  UnbestimmteMenge:
@@ -201,6 +204,11 @@ ProjektBeschreibung:
  
 QualifiedName:
    BEZEICHNER ('.' BEZEICHNER)*
+ ;
+ 
+ Float:
+ 	STRING
+ 	// INT ('.' INT)?
  ;
  
  enum Modifikationsart:
