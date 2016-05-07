@@ -84,7 +84,7 @@ RezeptbuchProjekt:
  ;
  
  ProduktImport:
- 	'import produkte' importURI = STRING ';'	
+ 	'import produkte' importURI = STRING 'alias' produkte=[Produktliste|STRING] ';'	
  ;
  
  RezeptBlatt:
@@ -147,8 +147,7 @@ RezeptbuchProjekt:
  ;
  
  ProduktRef:
- 	'ProduktRef:' 
- 	//refname=STRING  
+ 	'ProduktRef:'  
  	produkt=[ProduktBlatt|STRING]
  	'Menge:' anzahl=Float 'mal.' 
  ;
