@@ -27,8 +27,8 @@ class PartGenerator {
 	    <title>«liste.name»</title>
 	    «FOR rezept : liste.rezepte»
 	    	«val rezeptIndex = liste.rezepte.indexOf(rezept)»
-		<xi:include href="Rezept«parentIndex+'_'+rezeptIndex».dbk" />
-		«fsa.generateFile(RezeptGenerator.getDbkFileName(project, "Rezept"+parentIndex+'_'+rezeptIndex+".dbk"),
+		<xi:include href="Rezept_«parentIndex+'_'+rezeptIndex».dbk" />
+		«fsa.generateFile(RezeptGenerator.getDbkFileName(project, "Rezept_"+parentIndex+'_'+rezeptIndex+".dbk"),
 			createChapter(fsa,project,rezept, parentIndex+" "+rezeptIndex))»
 		«ENDFOR»
 	</part>
@@ -136,7 +136,7 @@ class PartGenerator {
 	<para>
 	«FOR notiz : rezept.notizen»
 		<note>
-		       		<para>«notiz.text»</para>
+			<para>«notiz.text»</para>
 		</note>
 	«ENDFOR»
 	</para>
