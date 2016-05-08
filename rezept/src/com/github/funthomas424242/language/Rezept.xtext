@@ -188,7 +188,7 @@ RezeptbuchProjekt:
  ;
  
  StoffTag:
- 	'Stoff' stoff=STRING '.'
+ 	'Stoff:' stoff=STRING '.'
  ;
  
  BenutzerTag:
@@ -221,13 +221,20 @@ QualifiedName:
  	| G='"g"' 
  	| ML='"ml"'
  	| L='"L"'
+ 	| PRISE='"Prise"'
  	| STUECK='"Stück"'
+ 	| STANGE='"Stange(n)"'
+ 	| KNOLLE='"Knolle(n)"'
+ 	| ZEHEN='"Zehe(n)"'
+ 	| SCHEIBEN='"Scheibe(n)"'
  	| EL='"Esslöffel"'
  	| TL='"Teelöffel"'
- 	| TUETEN='"Tüte(n)"'
- 	| PCKCH='"Päckchen"'
- 	| SCHEIBEN='"Scheibe(n)"'
+ 	| TASSE= '"Tasse(n)"'
  	| DOSE='"Dose(n)"'
+ 	| BECHER='"Becher"'
+ 	| TUETEN='"Tüte(n)"'
+ 	| PACKUNG='"Packung(en)"'
+ 	| PCKCH='"Päckchen"'
  ;
  
  enum UnbestimmteMengenangabe:
@@ -244,6 +251,8 @@ QualifiedName:
  	| PCKG='"Packung"'
  	| PCKCH='"Päckchen"'
  	| BECHER='"Becher"'
+ 	| BEUTEL='"Beutel"'
+ 	| STUECK='"Stück"'
  ;
  
  terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
