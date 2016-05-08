@@ -217,18 +217,21 @@ QualifiedName:
  ;
  
  enum Masseinheit:
- 	  KG='"kg"'
+ 	  KEINEAUSWAHL='""'
+ 	| KG='"kg"'
  	| G='"g"' 
  	| ML='"ml"'
  	| L='"L"'
  	| PRISE='"Prise"'
  	| STUECK='"Stück"'
  	| STANGE='"Stange(n)"'
- 	| KNOLLE='"Knolle(n)"'
  	| ZEHEN='"Zehe(n)"'
+ 	| KNOLLE='"Knolle(n)"'
  	| SCHEIBEN='"Scheibe(n)"'
+ 	| BUND='"Bund"'
  	| EL='"Esslöffel"'
  	| TL='"Teelöffel"'
+ 	| MESSERSPITZE='"Messerspitze(n)"'
  	| TASSE= '"Tasse(n)"'
  	| DOSE='"Dose(n)"'
  	| BECHER='"Becher"'
@@ -238,13 +241,15 @@ QualifiedName:
  ;
  
  enum UnbestimmteMengenangabe:
- 	  NACH_BEDARF='"nach Bedarf"'
+ 	  KEINEAUSWAHL='""'
+ 	| NACHBEDARF='"nach Bedarf"'
  	| ETWAS='"etwas"'
  	| WENIG='"wenig"'
  ;
  
  enum Verpackung:
- 	  GLAS='"Glas"'
+ 	  KEINEAUSWAHL='""'
+ 	| GLAS='"Glas"'
  	| DOSE='"Dose"'
  	| TUETE='"Tüte"'
  	| NETZ='"Netz"'

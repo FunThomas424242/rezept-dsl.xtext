@@ -31,7 +31,7 @@ class ProduktlisteParsingTest {
 			
 			//Getreide und Korn
 			Produkt "Mehl"{
-			Verpackung: "Packung".
+			
 			Menge: "500" "g".
 			Letzte Änderung: 04.08.2012.
 			}
