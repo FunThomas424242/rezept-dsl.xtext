@@ -4,7 +4,7 @@
 
 	<groupId>gh.funthomas424242.dsl</groupId>
 	<artifactId>rezept.parent</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Rezept - Parent</name>
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>

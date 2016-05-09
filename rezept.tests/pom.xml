@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>gh.funthomas424242.dsl</groupId>
 		<artifactId>rezept.parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>rezept.tests</artifactId>
