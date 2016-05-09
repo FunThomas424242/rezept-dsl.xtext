@@ -11,8 +11,8 @@
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 
 	<scm>
-		<connection>https://github.com/FunThomas424242/rezept-dsl.xtext.git</connection>
-		<developerConnection>https://github.com/FunThomas424242/rezept-dsl.xtext.git</developerConnection>
+		<connection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</connection>
+		<developerConnection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</developerConnection>
 		<tag>HEAD</tag>
 		<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 	</scm>
