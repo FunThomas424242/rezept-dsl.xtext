@@ -8,6 +8,14 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Rezept - Parent</name>
+	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
+
+	<scm>
+		<connection>https://github.com/FunThomas424242/rezept-dsl.xtext.git</connection>
+		<developerConnection>https://github.com/FunThomas424242/rezept-dsl.xtext.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
+	</scm>
 
 	<modules>
 		<module>rezept</module>
