@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>gh.funthomas424242.dsl</groupId>
+	<groupId>com.github.funthomas424242</groupId>
 	<artifactId>rezept.parent</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -12,9 +13,16 @@
 	<scm>
 		<connection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</connection>
 		<developerConnection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</developerConnection>
-		<tag>1.0.0</tag>
 		<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>bintray-funthomas424242-dsl</id>
+			<url>https://api.bintray.com/maven/funthomas424242/dsl/rezept-ds.xtext/;publish=1</url>
+		</repository>
+	</distributionManagement>
+
 
 	<modules>
 		<module>rezept</module>
@@ -25,8 +33,12 @@
 	</modules>
 
 	<properties>
-		<tycho-version>0.24.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<settings.servers.server.id>bintray-snapshots</settings.servers.server.id>
+		<settings.servers.server.username>funthomas424242</settings.servers.server.username>
+		<!-- <settings.servers.server.password></settings.servers.server.password> -->
+		<tycho-version>0.24.0</tycho-version>
 		<xtext.version>2.9.2</xtext.version>
 	</properties>
 

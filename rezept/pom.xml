@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>gh.funthomas424242.dsl</groupId>
+		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>rezept.parent</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
