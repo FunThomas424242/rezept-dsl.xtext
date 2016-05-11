@@ -1,3 +1,11 @@
+# 1.0.2
+* tbd 
+
+# 1.0.1
+* new groupId: com.github.funthomas424242
+  to work global at bintray with a unique groupId
+* distributionManagement added
+
 # 1.0.0
 * initiale Projekterstellung
 * Nahe zu identischen Sprachrealisierung zum Vorgängerprojekt (EMFText Realisierung)
