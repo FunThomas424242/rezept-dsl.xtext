@@ -59,6 +59,7 @@
 				<version>1.8</version>
 				<executions>
 					<execution>
+					<phase>deploy</phase>
 						<goals>
 							<goal>attach-artifact</goal>
 						</goals>
