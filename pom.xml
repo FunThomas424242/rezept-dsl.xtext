@@ -19,6 +19,7 @@
 	<distributionManagement>
 		<repository>
 			<id>bintray-funthomas424242-dsl</id>
+			<name>funthomas424242-dsl</name>
 			<url>https://api.bintray.com/maven/funthomas424242/dsl/rezept-ds.xtext/;publish=1</url>
 		</repository>
 	</distributionManagement>
