@@ -2,7 +2,7 @@
 Realisierung der Sprache Rezept mittels einer auf Xtext basierenden DSL.
 
 [![Build Status](https://travis-ci.org/FunThomas424242/rezept-dsl.xtext.svg?branch=master)](https://travis-ci.org/FunThomas424242/rezept-dsl.xtext)
-
+ [![Download](https://api.bintray.com/packages/funthomas424242/eclipse-features/rezept-dsl.xtext/images/download.svg) ](https://bintray.com/funthomas424242/eclipse-features/rezept-dsl.xtext/_latestVersion)
 ## Development
 
 * Eclipse IDE available as yatta profile https://marketplace.yatta.de/profiles/gyXP
