@@ -2,7 +2,7 @@
 <feature
       id="rezept.sdk"
       label="Rezept SDK Feature "
-      version="1.0.1">
+      version="1.0.2.qualifier">
 
    <description>
       Rezept ist eine DSL zur Beschreibung von Kochrezepten und -büchern.
