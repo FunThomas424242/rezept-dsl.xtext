@@ -14,6 +14,7 @@ import com.github.funthomas424242.language.rezept.StoffTag
 import com.github.funthomas424242.language.rezept.UnbestimmteMenge
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.github.funthomas424242.language.rezept.Verpackung
+import com.github.funthomas424242.language.rezept.Masseinheit
 
 /**
  * Generates code from your model files on save.
@@ -95,16 +96,18 @@ class PartGenerator {
     «FOR zutat : rezept.zutaten»
 	<listitem>
 	    <para>
+«IF zutat.menge instanceof BestimmteMenge» 
+	«val menge = zutat.menge as BestimmteMenge»
+		«menge.betrag.toString()»
+		«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
+			«menge.einheit»
+		«ENDIF»
+«ENDIF»
+«zutat.name»
 «IF zutat.menge instanceof UnbestimmteMenge»
 	«val menge = zutat.menge as UnbestimmteMenge»	          		
 		«menge.menge»
 «ENDIF»
-«zutat.name»
-	«IF zutat.menge instanceof BestimmteMenge» 
-		«val menge = zutat.menge as BestimmteMenge»
-			«menge.betrag.toString()»
-			«menge.einheit»
-	«ENDIF»
 	</para>
 	    </listitem>
 «ENDFOR»  
@@ -162,7 +165,10 @@ class PartGenerator {
 			«produktRef.produkt.name» 
 			«IF produktRef.produkt.menge instanceof BestimmteMenge»
 				«val menge = produktRef.produkt.menge as BestimmteMenge»
-				«menge.betrag.toString()» «menge.einheit»
+				«menge.betrag.toString()» 
+				«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
+					«menge.einheit»
+				«ENDIF»
 			«ENDIF»
 		</para>
 		 </listitem>
