@@ -188,15 +188,15 @@ RezeptbuchProjekt:
  ;
  
  StoffTag:
- 	'Stoff:' stoff=STRING '.'
+ 	'Stoff:' stoff=STRING
  ;
  
  BenutzerTag:
- 	'Tag:' bezeichnung=STRING '.'
+ 	'Tag:' bezeichnung=STRING
  ;
  
  DiaetTag:
- 	'Diät:' diaet=STRING '.'
+ 	'Diät:' diaet=STRING
  ;
  
  Name:

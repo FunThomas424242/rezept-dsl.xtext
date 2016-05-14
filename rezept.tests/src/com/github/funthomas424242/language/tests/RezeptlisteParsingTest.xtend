@@ -34,9 +34,9 @@ class RezeptlisteParsingTest {
 			Quelle: übernommen "verändert" aus "http://www.kochbar.de/rezept/369345/altes-DDR-Rezept-Jaegerschnitzel.html".
 			Ausreichend für 2 Personen.
 			Letzte Änderung: 05.07.2014.
-			Tag: "Nudeln".
-			Tag: "Jagdwurst".
-			Tag: "Tomate".
+			Tag: "Nudeln"
+			Tag: "Jagdwurst"
+			Tag: "Tomate"
 			
 			ProduktRef: "Braten Fond" Menge: "1" mal.
 			
@@ -97,8 +97,8 @@ class RezeptlisteParsingTest {
 			Quelle: übernommen "verändert" aus "http://www.kochbar.de/rezept/361082/Eisbein-gekocht.html".
 			Ausreichend für 2 Personen.
 			Letzte Änderung: 20.02.2016.
-			Tag: "Schwein".
-			Tag: "Fett".
+			Tag: "Schwein"
+			Tag: "Fett"
 			
 			Zutat: "Eisbein" Menge: "2" "Stück".
 			Zutat: "Möhren" Menge: "1" "Stück".

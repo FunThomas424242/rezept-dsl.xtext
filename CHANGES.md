@@ -1,5 +1,6 @@
 # 1.0.2
 * epub generierung erfolgt nicht in die site
+* issue #1 Diät, Stoff und Tag werden nicht mehr mit . abgeschlossen.
 * 
 
 # 1.0.1
