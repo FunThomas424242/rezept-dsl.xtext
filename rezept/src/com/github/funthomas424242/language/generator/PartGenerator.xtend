@@ -102,7 +102,7 @@ class PartGenerator {
 «zutat.name»
 	«IF zutat.menge instanceof BestimmteMenge» 
 		«val menge = zutat.menge as BestimmteMenge»
-			«menge.betrag»
+			«menge.betrag.toString()»
 			«menge.einheit»
 	«ENDIF»
 	</para>
@@ -155,14 +155,14 @@ class PartGenerator {
 	«FOR produktRef : rezept.produkte»
 		<listitem>
 		        <para>
-		«produktRef.anzahl» x
+		«produktRef.anzahl.toString()» x
 			«IF produktRef.produkt.verpackung != Verpackung.KEINEAUSWAHL»
 				«produktRef.produkt.verpackung»
 			«ENDIF»
 			«produktRef.produkt.name» 
 			«IF produktRef.produkt.menge instanceof BestimmteMenge»
 				«val menge = produktRef.produkt.menge as BestimmteMenge»
-				«menge.betrag» «menge.einheit»
+				«menge.betrag.toString()» «menge.einheit»
 			«ENDIF»
 		</para>
 		 </listitem>
