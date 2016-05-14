@@ -15,6 +15,7 @@ import com.github.funthomas424242.language.rezept.UnbestimmteMenge
 import org.eclipse.xtext.generator.IFileSystemAccess
 import com.github.funthomas424242.language.rezept.Verpackung
 import com.github.funthomas424242.language.rezept.Masseinheit
+import com.github.funthomas424242.language.rezept.UnbestimmteMengenangabe
 
 /**
  * Generates code from your model files on save.
@@ -105,8 +106,10 @@ class PartGenerator {
 «ENDIF»
 «zutat.name»
 «IF zutat.menge instanceof UnbestimmteMenge»
-	«val menge = zutat.menge as UnbestimmteMenge»	          		
+	«val menge = zutat.menge as UnbestimmteMenge»	
+	«IF menge.menge != UnbestimmteMengenangabe.KEINEAUSWAHL»          		
 		«menge.menge»
+	«ENDIF»
 «ENDIF»
 	</para>
 	    </listitem>

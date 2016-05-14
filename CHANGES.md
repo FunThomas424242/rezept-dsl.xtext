@@ -1,10 +1,11 @@
 # 1.0.2
 * epub generierung erfolgt nicht in die site
 * issue #1 Diät, Stoff und Tag werden nicht mehr mit . abgeschlossen.
-* Mengen werden als Nummern nicht als Strings angegeben.
-* Mengen werden vor den Zutaten angegeben
-* Unbestimmte Mengen werden nach den Zutaten angegeben
+* Mengen werden als Nummern nicht als Strings ausgegeben.
+* Mengen werden vor den Zutaten ausgegeben
+* Unbestimmte Mengen werden nach den Zutaten ausgegeben
 * Die Masseinheit kann ab sofort entfallen z.B. bei Zutaten 1 Stück Möhre -> 1 Möhre
+* Masseinheiten und Unbestimmte Mengenangaben werden ohne Quotes im Editor eingegeben.
 
 # 1.0.1
 * new groupId: com.github.funthomas424242

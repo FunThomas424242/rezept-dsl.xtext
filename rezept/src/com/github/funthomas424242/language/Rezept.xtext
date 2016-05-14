@@ -234,10 +234,10 @@ RezeptbuchProjekt:
  ;
  
  enum UnbestimmteMengenangabe:
- 	  KEINEAUSWAHL='""'
- 	| NACHBEDARF='"nach Bedarf"'
- 	| ETWAS='"etwas"'
- 	| WENIG='"wenig"'
+ 	  KEINEAUSWAHL='keine Auswahl'
+ 	| NACHBEDARF='nach Bedarf'
+ 	| ETWAS='etwas'
+ 	| WENIG='wenig'
  ;
  
  enum Verpackung:
