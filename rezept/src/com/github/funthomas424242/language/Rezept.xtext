@@ -208,8 +208,8 @@ QualifiedName:
  ;
  
  Float:
- 	STRING
- 	// INT ('.' INT)?
+ 	//STRING
+ 	INT ('.' INT)?
  ;
  
  enum Modifikationsart:

@@ -1,7 +1,7 @@
 # 1.0.2
 * epub generierung erfolgt nicht in die site
 * issue #1 Diät, Stoff und Tag werden nicht mehr mit . abgeschlossen.
-* 
+* Mengen werden als Nummern nicht als Strings angegeben.
 
 # 1.0.1
 * new groupId: com.github.funthomas424242
