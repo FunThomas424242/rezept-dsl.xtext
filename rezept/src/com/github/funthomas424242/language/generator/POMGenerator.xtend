@@ -100,29 +100,7 @@ class POMGenerator{
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<build>
         <defaultGoal>site</defaultGoal>
-		<plugins>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
-				<executions>
-					<execution>
-						<id>mediacopy-common</id>
-						<phase>pre-site</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/site/${project.artifactId}/media</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${media.parent}</directory>
-									<filtering>false</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+		<plugins>			
 			<plugin>
 				<groupId>com.agilejava.docbkx</groupId>
 				<artifactId>docbkx-maven-plugin</artifactId>
@@ -151,7 +129,7 @@ class POMGenerator{
 				</executions>
 				<configuration>
 					<sourceDirectory>${basedir}/src/main/docbkx</sourceDirectory>
-					<targetDirectory>${project.build.directory}/site/${project.artifactId}</targetDirectory>
+					<!-- <targetDirectory>${project.build.directory}/site/${project.artifactId}</targetDirectory> -->
 					<generatedSourceDirectory>${project.build.directory}/docbkx/generated</generatedSourceDirectory>
 					<imgSrcPath>${site.img.path}</imgSrcPath>
 					<keepRelativeImageUris>true</keepRelativeImageUris>
@@ -187,6 +165,44 @@ class POMGenerator{
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>mediacopy-common</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/site/${project.artifactId}/media</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${media.parent}</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+                    <execution>
+                        <id>webhelpcopy-common</id>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/site/${project.artifactId}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/docbkx/webhelp</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>					
+				</executions>
+			</plugin>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>

@@ -1,5 +1,6 @@
 # 1.0.2
-* tbd 
+* epub generierung erfolgt nicht in die site
+* 
 
 # 1.0.1
 * new groupId: com.github.funthomas424242
