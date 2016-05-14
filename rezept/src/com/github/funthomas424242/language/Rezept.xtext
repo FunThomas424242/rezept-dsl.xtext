@@ -130,6 +130,7 @@ RezeptbuchProjekt:
  
  Bild:
  	'Bild:' ablageort=Ablageort
+ 	('InternetPage' internetPage=Internetpfad)?
  	('Text:' beschreibung=STRING)?
  	('Lizenz:' lizenz=STRING)
  	('Urheber:' urheber=STRING)?

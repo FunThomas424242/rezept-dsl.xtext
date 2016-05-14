@@ -16,6 +16,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import com.github.funthomas424242.language.rezept.Verpackung
 import com.github.funthomas424242.language.rezept.Masseinheit
 import com.github.funthomas424242.language.rezept.UnbestimmteMengenangabe
+import com.github.funthomas424242.language.rezept.Bild
 
 /**
  * Generates code from your model files on save.
@@ -24,20 +25,20 @@ import com.github.funthomas424242.language.rezept.UnbestimmteMengenangabe
  */
 class PartGenerator {
 
-	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste, int parentIndex) '''		
-	<part>
-	    <title>«liste.name»</title>
-	    «FOR rezept : liste.rezepte»
-	    	«val rezeptIndex = liste.rezepte.indexOf(rezept)»
-		<xi:include href="Rezept_«parentIndex+'_'+rezeptIndex».dbk" />
-		«fsa.generateFile(RezeptGenerator.getDbkFileName(project, "Rezept_"+parentIndex+'_'+rezeptIndex+".dbk"),
+	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste,
+		int parentIndex) '''		
+		<part>
+		    <title>«liste.name»</title>
+		    «FOR rezept : liste.rezepte»
+		    	«val rezeptIndex = liste.rezepte.indexOf(rezept)»
+			<xi:include href="Rezept_«parentIndex+'_'+rezeptIndex».dbk" />
+			«fsa.generateFile(RezeptGenerator.getDbkFileName(project, "Rezept_"+parentIndex+'_'+rezeptIndex+".dbk"),
 			createChapter(fsa,project,rezept, parentIndex+" "+rezeptIndex))»
-		«ENDFOR»
-	</part>
+			«ENDFOR»
+		</part>
 	'''
 
-	def static createChapter(IFileSystemAccess fsa, RezeptbuchProjekt project, RezeptBlatt rezept,
-		String rezeptIndex) '''
+	def static createChapter(IFileSystemAccess fsa, RezeptbuchProjekt project, RezeptBlatt rezept, String rezeptIndex) '''
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -182,45 +183,47 @@ class PartGenerator {
 
 «IF !rezept.bilder.nullOrEmpty»
 <formalpara>
+
   <title>Bilder</title>
 
 	<para>
-	«FOR bild : rezept.bilder»
-		<inlinemediaobject>		
-			<alt>«bild.beschreibung»</alt>	
-			      <imageobject>
-				<info>
-					<legalnotice><para>«bild.lizenz»</para></legalnotice>
-					<author>
-						<personname>
-									<othername>«bild.urheber»</othername>
-						</personname>
-					</author>
-						</info>
-				<imagedata contentwidth="2in"
-					«IF bild.ablageort instanceof Internetpfad»
-						«val ablage = bild.ablageort as Internetpfad»
-						fileref="«ablage.url»">
-					«ELSE»
-						«val ablage = bild.ablageort as Lokalerpfad»
-						fileref="«ablage.fileName»">
-					«ENDIF»
-				</imagedata>
-			</imageobject>
-			<!-- alternative beschreibung auf rein textbasierten Systemen -->
-			<textobject>
-				<phrase>«bild.beschreibung»</phrase>
-			</textobject>
-		</inlinemediaobject>
-		<footnote><para>
-			<trademark class='copyright'/>
-			<author>
-				<personname>
-					<othername>«bild.urheber»</othername>
-				</personname>
-			</author>
-			geschützt durch: «bild.lizenz».
-		</para></footnote>
+	«FOR bild : rezept.bilder»	
+		«IF bild.internetPage != null »
+			<ulink url="«bild.internetPage.url»">
+		«ELSE»
+			<ulink url="«getFileRef(bild)»">
+	 	«ENDIF»
+			<inlinemediaobject>		
+				<alt>«bild.beschreibung»</alt>	
+				      <imageobject>
+					<info>
+						<legalnotice><para>«bild.lizenz»</para></legalnotice>
+						<author>
+							<personname>
+										<othername>«bild.urheber»</othername>
+							</personname>
+						</author>
+							</info>
+					<imagedata contentwidth="2in" fileref="«getFileRef(bild)»">
+					</imagedata>
+				</imageobject>
+				<!-- alternative beschreibung auf rein textbasierten Systemen -->
+				<textobject>
+					<phrase>«bild.beschreibung»</phrase>
+				</textobject>
+			</inlinemediaobject>
+		</ulink>
+		<footnote>
+			<para>
+				<trademark class='copyright'/>
+				<author>
+					<personname>
+						<othername>«bild.urheber»</othername>
+					</personname>
+				</author>
+				geschützt durch: «bild.lizenz».
+			</para>
+		</footnote>
 	«ENDFOR»
 	</para>
 
@@ -229,9 +232,20 @@ class PartGenerator {
 
 </chapter>
 	'''
-	
-	def static stripQuotes( String text ){
-		return text.substring(1,text.length-1)
+
+	def static stripQuotes(String text) {
+		return text.substring(1, text.length - 1)
 	}
-	
+
+	def static getFileRef(Bild bild) {
+
+		if (bild.ablageort instanceof Internetpfad) {
+			val ablage = bild.ablageort as Internetpfad;
+			return ablage.url
+		} else {
+			val ablage = bild.ablageort as Lokalerpfad;
+			return ablage.fileName
+		}
+	}
+
 }
