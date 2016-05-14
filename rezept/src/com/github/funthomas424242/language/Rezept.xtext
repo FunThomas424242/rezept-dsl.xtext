@@ -199,16 +199,10 @@ RezeptbuchProjekt:
  	'Diät:' diaet=STRING
  ;
  
- Name:
- 	BEZEICHNER
- ;
  
-QualifiedName:
-   BEZEICHNER ('.' BEZEICHNER)*
- ;
- 
- Float:
- 	INT ('.' INT)?
+ Float :
+ 	STRING
+ 	//INT ('.' INT)?
  ;
  
  enum Modifikationsart:
@@ -216,27 +210,27 @@ QualifiedName:
  ;
  
  enum Masseinheit:
- 	  KEINEAUSWAHL='""'
- 	| KG='"kg"'
- 	| G='"g"' 
- 	| ML='"ml"'
- 	| L='"L"'
- 	| PRISE='"Prise"'
- 	| STUECK='"Stück"'
- 	| STANGE='"Stange(n)"'
- 	| ZEHEN='"Zehe(n)"'
- 	| KNOLLE='"Knolle(n)"'
- 	| SCHEIBEN='"Scheibe(n)"'
- 	| BUND='"Bund"'
- 	| EL='"Esslöffel"'
- 	| TL='"Teelöffel"'
- 	| MESSERSPITZE='"Messerspitze(n)"'
- 	| TASSE= '"Tasse(n)"'
- 	| DOSE='"Dose(n)"'
- 	| BECHER='"Becher"'
- 	| TUETEN='"Tüte(n)"'
- 	| PACKUNG='"Packung(en)"'
- 	| PCKCH='"Päckchen"'
+ 	  KEINEAUSWAHL='keine Auswahl'
+ 	| KG='kg'
+ 	| G='g' 
+ 	| ML='ml'
+ 	| L='L'
+ 	| PRISE='Prise'
+ 	| STUECK='Stück'
+ 	| STANGE='Stange(n)'
+ 	| ZEHEN='Zehe(n)'
+ 	| KNOLLE='Knolle(n)'
+ 	| SCHEIBEN='Scheibe(n)'
+ 	| BUND='Bund'
+ 	| EL='Esslöffel'
+ 	| TL='Teelöffel'
+ 	| MESSERSPITZE='Messerspitze(n)'
+ 	| TASSE= 'Tasse(n)'
+ 	| DOSE='Dose(n)'
+ 	| BECHER='Becher'
+ 	| TUETEN='Tüte(n)'
+ 	| PACKUNG='Packung(en)'
+ 	| PCKCH='Päckchen'
  ;
  
  enum UnbestimmteMengenangabe:
@@ -259,7 +253,7 @@ QualifiedName:
  	| STUECK='"Stück"'
  ;
  
- terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
+ //terminal BEZEICHNER : ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_') ('a'..'z'|'A'..'Z'|'ä'..'ü'| 'Ä'..'Ü'|'#'|'_'|'0'..'9')*;
  terminal DATUM : ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9')('0'..'9') ('0'..'9');
  terminal HEADER :
 			'==' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'=')  )+ '==' |

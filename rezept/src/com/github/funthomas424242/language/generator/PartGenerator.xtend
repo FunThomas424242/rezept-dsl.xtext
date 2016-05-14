@@ -98,7 +98,7 @@ class PartGenerator {
 	    <para>
 «IF zutat.menge instanceof BestimmteMenge» 
 	«val menge = zutat.menge as BestimmteMenge»
-		«menge.betrag.toString()»
+		«stripQuotes(menge.betrag)»
 		«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
 			«menge.einheit»
 		«ENDIF»
@@ -158,14 +158,14 @@ class PartGenerator {
 	«FOR produktRef : rezept.produkte»
 		<listitem>
 		        <para>
-		«produktRef.anzahl.toString()» x
+		«stripQuotes(produktRef.anzahl)» x
 			«IF produktRef.produkt.verpackung != Verpackung.KEINEAUSWAHL»
 				«produktRef.produkt.verpackung»
 			«ENDIF»
 			«produktRef.produkt.name» 
 			«IF produktRef.produkt.menge instanceof BestimmteMenge»
 				«val menge = produktRef.produkt.menge as BestimmteMenge»
-				«menge.betrag.toString()» 
+				«stripQuotes(menge.betrag)» 
 				«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
 					«menge.einheit»
 				«ENDIF»
@@ -226,4 +226,9 @@ class PartGenerator {
 
 </chapter>
 	'''
+	
+	def static stripQuotes( String text ){
+		return text.substring(1,text.length-1)
+	}
+	
 }
