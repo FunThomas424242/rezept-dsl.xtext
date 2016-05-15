@@ -5,7 +5,7 @@
 
 	<groupId>com.github.funthomas424242</groupId>
 	<artifactId>rezept.parent</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>2.0.0</version>
 	<packaging>pom</packaging>
 	<name>Rezept - Parent</name>
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
@@ -132,6 +132,15 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>updateversions</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>set-version</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
