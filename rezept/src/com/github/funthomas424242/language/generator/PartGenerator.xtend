@@ -29,6 +29,29 @@ class PartGenerator {
 		int parentIndex) '''		
 		<part>
 		    <title>«liste.name»</title>
+		    
+		    <partintro>
+		    «IF liste.zitat != null»
+		    <blockquote>
+		    	<attribution>«liste.zitat.verfasser»</attribution>
+		    	<para>
+		    		«liste.zitat.text»
+		    	</para>
+		    </blockquote>
+		    «ENDIF»
+		    «IF liste.bild != null»
+		    <graphic 
+		    	srccredit="«liste.bild.beschreibung»" 
+		    	fileref="«Helper.getFileRef(liste.bild)»"/>
+		    «ENDIF»
+		    «IF liste.zusammenfassung != null»
+		    <para>
+		    	«liste.zusammenfassung.text»
+		    </para>
+		    «ENDIF»
+		    
+		    </partintro>
+		    
 		    «FOR rezept : liste.rezepte»
 		    	«val rezeptIndex = liste.rezepte.indexOf(rezept)»
 			<xi:include href="Rezept_«parentIndex+'_'+rezeptIndex».dbk" />
@@ -100,7 +123,7 @@ class PartGenerator {
 	    <para>
 «IF zutat.menge instanceof BestimmteMenge» 
 	«val menge = zutat.menge as BestimmteMenge»
-		«stripQuotes(menge.betrag)»
+		«Helper.stripQuotes(menge.betrag)»
 		«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
 			«menge.einheit»
 		«ENDIF»
@@ -162,14 +185,14 @@ class PartGenerator {
 	«FOR produktRef : rezept.produkte»
 		<listitem>
 		        <para>
-		«stripQuotes(produktRef.anzahl)» x
+		«Helper.stripQuotes(produktRef.anzahl)» x
 			«IF produktRef.produkt.verpackung != Verpackung.KEINEAUSWAHL»
 				«produktRef.produkt.verpackung»
 			«ENDIF»
 			«produktRef.produkt.name» 
 			«IF produktRef.produkt.menge instanceof BestimmteMenge»
 				«val menge = produktRef.produkt.menge as BestimmteMenge»
-				«stripQuotes(menge.betrag)» 
+				«Helper.stripQuotes(menge.betrag)» 
 				«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
 					«menge.einheit»
 				«ENDIF»
@@ -191,7 +214,7 @@ class PartGenerator {
 		«IF bild.internetPage != null »
 			<ulink url="«bild.internetPage.url»">
 		«ELSE»
-			<ulink url="«getFileRef(bild)»">
+			<ulink url="«Helper.getFileRef(bild)»">
 	 	«ENDIF»
 			<inlinemediaobject>		
 				<alt>«bild.beschreibung»</alt>	
@@ -204,7 +227,7 @@ class PartGenerator {
 							</personname>
 						</author>
 							</info>
-					<imagedata contentwidth="2in" fileref="«getFileRef(bild)»">
+					<imagedata contentwidth="2in" fileref="«Helper.getFileRef(bild)»">
 					</imagedata>
 				</imageobject>
 				<!-- alternative beschreibung auf rein textbasierten Systemen -->
@@ -232,20 +255,5 @@ class PartGenerator {
 
 </chapter>
 	'''
-
-	def static stripQuotes(String text) {
-		return text.substring(1, text.length - 1)
-	}
-
-	def static getFileRef(Bild bild) {
-
-		if (bild.ablageort instanceof Internetpfad) {
-			val ablage = bild.ablageort as Internetpfad;
-			return ablage.url
-		} else {
-			val ablage = bild.ablageort as Lokalerpfad;
-			return ablage.fileName
-		}
-	}
 
 }

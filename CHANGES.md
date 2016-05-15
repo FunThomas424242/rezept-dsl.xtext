@@ -2,7 +2,8 @@
 
 * issue #6 umgestellt auf separate Konfigurationen
 * umgestellt auf Generierung von epub3 Format
-* 
+* issue #4 fertiggestellt -> Parts mit Bildern, Zitaten und Texten
+*
 
 
 # 2.0.0 (1.0.2-SNAPSHOT)

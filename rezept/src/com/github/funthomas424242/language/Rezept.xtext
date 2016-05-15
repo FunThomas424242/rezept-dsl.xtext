@@ -81,6 +81,9 @@ RezeptbuchProjekt:
  
  Rezeptliste:
  	'Rezeptliste' name=STRING ';' 
+ 	(zitat=Zitat)?
+ 	(bild=Bild)?
+ 	(zusammenfassung=Abstract)?
  	(imports+=ProduktImport)*
  	(rezepte+=RezeptBlatt)+
  ;
@@ -102,9 +105,10 @@ RezeptbuchProjekt:
 	 	(produkte+=ProduktRef)*
 	 	(zutaten+=Zutat)+
 	 	(schritte+=Arbeitsschritt)+
-	 	'--Zusatzinformationen--'
-	 	(notizen+=Notiz)*
-	 	(bilder+=Bild)*
+	 	('--Zusatzinformationen--'
+		 	(notizen+=Notiz)*
+		 	(bilder+=Bild)*
+	 	)?
  '}';
  
  Arbeitsschritt:
@@ -117,24 +121,44 @@ RezeptbuchProjekt:
  ;
  
  Tipp:
- 	'Tipp:' text=STRING
+ 	'Tipp:' '{'
+ 	text=STRING
+ 	'}'
  ;
  
  Kommentar:
- 	'Kommentar:' text=STRING
+ 	'Kommentar:' '{' 
+ 	text=STRING
+ 	'}'
  ;
  
- Anmerkung:
- 	'Anmerkung:' text=STRING
+ Anmerkung: 
+ 	'Anmerkung:' '{' 
+ 	text=STRING
+ 	'}'
+ ;
+ 
+ Abstract:
+ 	'Zusammenfassung:' '{'
+		text=STRING
+	'}'
+ ;
+ 
+ Zitat:
+ 	'Zitat:' '{'
+ 	'Verfasser:' verfasser=STRING
+ 	'Text:' text=STRING
+ 	'}'
  ;
  
  Bild:
- 	'Bild:' ablageort=Ablageort
+ 	'Bild:' '{'
+	ablageort=Ablageort
  	('InternetPage' internetPage=Internetpfad)?
  	('Text:' beschreibung=STRING)?
  	('Lizenz:' lizenz=STRING)
  	('Urheber:' urheber=STRING)?
- 	'.'
+ 	'}'
  ;
  
  Ablageort:
@@ -203,7 +227,6 @@ RezeptbuchProjekt:
  
  Float :
  	STRING
- 	//INT ('.' INT)?
  ;
  
  enum Modifikationsart:
