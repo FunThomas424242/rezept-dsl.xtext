@@ -10,6 +10,18 @@
 	<name>Rezept - Parent</name>
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 
+
+	<properties>
+		<newVersion>2.0.0</newVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<settings.servers.server.id>bintray-snapshots</settings.servers.server.id>
+		<settings.servers.server.username>funthomas424242</settings.servers.server.username>
+		<!-- <settings.servers.server.password></settings.servers.server.password> -->
+		<tycho-version>0.25.0</tycho-version>
+		<xtext.version>2.9.2</xtext.version>
+	</properties>
+
 	<scm>
 		<connection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</connection>
 		<developerConnection>scm:git:https://github.com/FunThomas424242/rezept-dsl.xtext.git</developerConnection>
@@ -38,15 +50,7 @@
 		<module>rezept.updatesite</module>
 	</modules>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.deploy.skip>true</maven.deploy.skip>
-		<settings.servers.server.id>bintray-snapshots</settings.servers.server.id>
-		<settings.servers.server.username>funthomas424242</settings.servers.server.username>
-		<!-- <settings.servers.server.password></settings.servers.server.password> -->
-		<tycho-version>0.24.0</tycho-version>
-		<xtext.version>2.9.2</xtext.version>
-	</properties>
+
 
 	<repositories>
 		<repository>
@@ -105,6 +109,17 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-versions-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -112,8 +127,11 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

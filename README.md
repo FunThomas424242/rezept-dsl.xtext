@@ -17,6 +17,10 @@ Wer an der Sprache für Kochbücher und Rezepte mitentwickeln möchte, der finde
 Entwicklungsumgebung auf yatta profiles unter:
 https://marketplace.yatta.de/profiles/gyXP
 
+## Notizen zum Releasebau
+
+* In der pom.xml vom parent muss das Property newVersion auf die neue Version gesetzt werden.
+* mvn clean install aufrufen (Alternativ: *mvn tycho-versions:set-version*)
 
 ## Nützliche Infos im Netz
 

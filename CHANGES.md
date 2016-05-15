@@ -1,4 +1,5 @@
-# 1.0.2
+# 2.0.0 (1.0.2-SNAPSHOT)
+* Diese Version bricht die Syntax API, wodurch die in Rezept abgefassten Dokumente zu ändern sind.
 * epub generierung erfolgt nicht in die site
 * issue #1 Diät, Stoff und Tag werden nicht mehr mit . abgeschlossen.
 * Mengen werden als Nummern nicht als Strings ausgegeben.
@@ -6,6 +7,7 @@
 * Unbestimmte Mengen werden nach den Zutaten ausgegeben
 * Die Masseinheit kann ab sofort entfallen z.B. bei Zutaten 1 Stück Möhre -> 1 Möhre
 * Masseinheiten und Unbestimmte Mengenangaben werden ohne Quotes im Editor eingegeben.
+* tycho-versions-plugin aufgenommen um leichter ein Release bauen zu können.
 
 # 1.0.1
 * new groupId: com.github.funthomas424242
