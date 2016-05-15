@@ -46,7 +46,7 @@ class BookGenerator {
 	«ENDFOR»
 	</authorgroup>
 
-	<pubdate>«convertDateToDefaultLocale(project.buch.datumPublished)»</pubdate>
+	<pubdate>«project.buch.datumPublished»</pubdate>
 	«IF project.buch.lizenz!=null»
 		<legalnotice><para>«project.buch.lizenz.hinweis»</para></legalnotice>
 	«ENDIF» 	
@@ -74,33 +74,12 @@ class BookGenerator {
 <toc/>
 
 «FOR imp : project.buch.imports»
-	«val Rezeptdatei rezeptdatei = resourceToEObject(openImport(imp.eResource, imp.importURI)) as Rezeptdatei»
+	«val Rezeptdatei rezeptdatei = Helper.resourceToEObject(Helper.openImport(imp.eResource, imp.importURI)) as Rezeptdatei»
 	«val importIndex = project.buch.imports.indexOf(imp)»
 	«PartGenerator.createPart(fsa,project,rezeptdatei.rezept.rezepte,importIndex)»
 «ENDFOR»
 
 «AnhangLizenzGenerator.createLizenzAnhang(fsa,project)»
 	'''
-	
-	private def static EObject resourceToEObject(Resource resource){
-		return resource?.allContents?.head;
-	}
-	
-	private def static Resource openImport(Resource contextResource, String importedURIAsString){
-		val URI contextURI=contextResource?.getURI
-		val URI importedURI=URI?.createURI(importedURIAsString)
-		val URI resolvedURI=importedURI?.resolve(contextURI)
 		
-		val ResourceSet contextResourceSet = contextResource?.resourceSet
-		val Resource resource = contextResourceSet?.getResource(resolvedURI, true)
-		return resource
-	}
-	
-	def static String convertDateToDefaultLocale( String datum ){
-		val String yyyy = datum.substring(6,10)
-		val String mm   = datum.substring(3,5)
-		val String dd   = datum.substring(0,2)
-		return (yyyy + '-' + mm + '-' + dd)
-	}
-	
 }

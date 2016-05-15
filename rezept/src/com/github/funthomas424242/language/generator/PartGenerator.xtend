@@ -71,7 +71,14 @@ class PartGenerator {
          xmlns:ns3="http://www.w3.org/1999/xhtml"
          xmlns:db="http://docbook.org/ns/docbook">
  
+ <chapterinfo>
+ 	<pubdate>«rezept.letzteAenderung» </pubdate>
+ </chapterinfo>
+ 
 <title>«rezept.titel»</title>
+«IF rezept.untertitel != null»
+	<subtitle>«rezept.untertitel»</subtitle>
+«ENDIF»
 
 <para>
 	<variablelist>
