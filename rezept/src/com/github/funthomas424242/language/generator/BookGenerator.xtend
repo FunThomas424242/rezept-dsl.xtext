@@ -46,7 +46,7 @@ class BookGenerator {
 	«ENDFOR»
 	</authorgroup>
 
-	<pubdate>«project.buch.datumPublished»</pubdate>
+	<pubdate>«convertDateToDefaultLocale(project.buch.datumPublished)»</pubdate>
 	«IF project.buch.lizenz!=null»
 		<legalnotice><para>«project.buch.lizenz.hinweis»</para></legalnotice>
 	«ENDIF» 	
@@ -94,6 +94,13 @@ class BookGenerator {
 		val ResourceSet contextResourceSet = contextResource?.resourceSet
 		val Resource resource = contextResourceSet?.getResource(resolvedURI, true)
 		return resource
+	}
+	
+	def static String convertDateToDefaultLocale( String datum ){
+		val String yyyy = datum.substring(6,10)
+		val String mm   = datum.substring(3,5)
+		val String dd   = datum.substring(0,2)
+		return (yyyy + '-' + mm + '-' + dd)
 	}
 	
 }
