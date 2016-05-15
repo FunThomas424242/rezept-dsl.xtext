@@ -25,7 +25,7 @@ https://marketplace.yatta.de/profiles/gyXP
 1. check travis-ci build grün
 1. git branch 2.0.0
 1. git checkout 2.0.0
-1. git push
+1. git push --set-upstream origin 2.0.0
 1. git tag 2.0.0-RELEASE
 1. git push origin tags/2.0.0-RELEASE
 1. check travis-ci build grün
