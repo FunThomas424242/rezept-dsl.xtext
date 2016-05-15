@@ -19,8 +19,18 @@ https://marketplace.yatta.de/profiles/gyXP
 
 ## Notizen zum Releasebau
 
-* In der pom.xml vom parent muss das Property newVersion auf die neue Version gesetzt werden.
-* mvn clean install aufrufen (Alternativ: *mvn tycho-versions:set-version*)
+1. In der pom.xml vom parent muss das Property newVersion auf die neue Version gesetzt werden.
+1. mvn clean install aufrufen (Alternativ: *mvn tycho-versions:set-version*)
+1. git push -> github
+1. check travis-ci build grün
+1. git branch 2.0.0
+1. git checkout 2.0.0
+1. git push
+1. git tag 2.0.0-RELEASE
+1. git push origin tags/2.0.0-RELEASE
+1. check travis-ci build grün
+1. mvn deploy -> https://oss.jfrog.org/webapp/#/artifacts/browse/tree/General/oss-release-local
+1. Manuell das Release von oss.jfrog.org kopieren nach bintray package: funthomas424242/eclipse-features/rezept-dsl.xtext
 
 ## Nützliche Infos im Netz
 
