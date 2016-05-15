@@ -104,32 +104,8 @@ class POMGenerator{
 			<plugin>
 				<groupId>com.agilejava.docbkx</groupId>
 				<artifactId>docbkx-maven-plugin</artifactId>
-				<version>2.0.14</version>
-				<executions>
-					<execution>
-						<id>generate-output</id>
-						<phase>pre-site</phase>
-						<goals>
-							<goal>generate-webhelp</goal>
-							<goal>generate-epub</goal>
-							<!--goal>generate-html</goal>
-							<goal>generate-pdf</goal>
-							<goal>generate-javahelp</goal>
-							<goal>generate-rtf</goal>
-							<goal>generate-html</goal>
-							<goal>generate-xhtml</goal>
-							<goal>generate-manpages</goal>
-							<goal>generate-eclipse</goal-->
-						</goals>
-						<configuration>
-							<draftMode>${draft.mode}</draftMode>
-							<draftWatermarkImage>../../media/draft.png</draftWatermarkImage>
-						</configuration>
-					</execution>
-				</executions>
 				<configuration>
 					<sourceDirectory>${basedir}/src/main/docbkx</sourceDirectory>
-					<!-- <targetDirectory>${project.build.directory}/site/${project.artifactId}</targetDirectory> -->
 					<generatedSourceDirectory>${project.build.directory}/docbkx/generated</generatedSourceDirectory>
 					<imgSrcPath>${site.img.path}</imgSrcPath>
 					<keepRelativeImageUris>true</keepRelativeImageUris>
@@ -146,20 +122,44 @@ class POMGenerator{
 					<sectionAutolabelMaxDepth>3</sectionAutolabelMaxDepth>
 					<sectionLabelIncludesComponentLabel>2</sectionLabelIncludesComponentLabel>
 					<authorOthernameInMiddle>true</authorOthernameInMiddle>
-					<epubAutolabel>1</epubAutolabel>
+					<draftMode>${draft.mode}</draftMode>
+					<draftWatermarkImage>../../media/draft.png</draftWatermarkImage>
+					<l10nGentextDefaultLanguage>de</l10nGentextDefaultLanguage>
 				</configuration>
+				<executions>
+					<execution>
+						<id>generate-webhelp</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>generate-webhelp</goal>
+						</goals>
+						<configuration>
+							<targetDirectory>${project.build.directory}/site/${project.artifactId}</targetDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>generate-epub</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>generate-epub3</goal>
+						</goals>
+						<configuration>
+							<showXslMessages>true</showXslMessages>
+							<epubAutolabel>1</epubAutolabel>
+							<epubEmbeddedFonts>true</epubEmbeddedFonts>
+							<!-- <localL10nXml>de</localL10nXml> -->
+							<epubDcLanguageId>de</epubDcLanguageId>
+							<epubIncludeMetadataDcElements>true</epubIncludeMetadataDcElements>
+							<epubIncludeNcx>true</epubIncludeNcx>													
+						</configuration>
+					</execution>
+				</executions>
+
 				<dependencies>
-					<!--dependency>
-						<groupId>org.docbook</groupId>
-						<artifactId>docbook-xml</artifactId>
-						<version>5.0</version>
-						<type>pom</type>
-						<scope>runtime</scope>
-					</dependency-->
 					<dependency>
 						<groupId>net.sf.docbook</groupId>
 						<artifactId>docbook-xml</artifactId>
-						<version>5.0-all</version>
+						<version>5.1b4-all</version>
 						<type>pom</type>
 						<scope>runtime</scope>
 					</dependency>
@@ -167,7 +167,6 @@ class POMGenerator{
 			</plugin>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
 				<executions>
 					<execution>
 						<id>mediacopy-common</id>
@@ -185,22 +184,6 @@ class POMGenerator{
 							</resources>
 						</configuration>
 					</execution>
-                    <execution>
-                        <id>webhelpcopy-common</id>
-                        <phase>pre-site</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/site/${project.artifactId}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/docbkx/webhelp</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>					
 				</executions>
 			</plugin>			
 			<plugin>
@@ -209,6 +192,23 @@ class POMGenerator{
 				<version>${mvn.siteplugin.version}</version>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<groupId>com.agilejava.docbkx</groupId>
+					<artifactId>docbkx-maven-plugin</artifactId>
+					<version>2.0.16</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
