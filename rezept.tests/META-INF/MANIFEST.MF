@@ -3,15 +3,17 @@ Bundle-ManifestVersion: 2
 Bundle-Name: rezept.tests
 Bundle-Vendor: FunThomas424242 (Thomas Schubert)
 Bundle-Version: 3.1.0.qualifier
-Bundle-SymbolicName: rezept.tests;singleton:=true
+Bundle-SymbolicName: com.github.funthomas424242.rezept.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: rezept,
- rezept.ui,
+Require-Bundle: com.github.funthomas424242.rezept,
+ com.github.funthomas424242.rezept.ui,
  org.eclipse.core.runtime,
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.ui.workbench;resolution:=optional,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ rezept,
+ rezept.ui
 Import-Package: org.apache.log4j,
  org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",
@@ -21,4 +23,4 @@ Import-Package: org.apache.log4j,
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package:  com.github.funthomas424242.language
+Export-Package: com.github.funthomas424242.language

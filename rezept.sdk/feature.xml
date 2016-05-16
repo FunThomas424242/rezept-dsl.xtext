@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="rezept.sdk"
+      id="com.github.funthomas424242.rezept.sdk"
       label="Rezept SDK Feature "
       version="3.1.0.qualifier"
       provider-name="FunThomas424242 (Thomas Schubert)"
-      plugin="rezept">
+      plugin="com.github.funthomas424242.rezept">
 
    <description>
       Rezept ist eine DSL zur Beschreibung von Kochrezepten und -büchern.
@@ -533,14 +533,14 @@ That&apos;s all there is to it!
    </url>
 
    <plugin
-         id="rezept"
+         id="com.github.funthomas424242.rezept"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="rezept.ui"
+         id="com.github.funthomas424242.rezept.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
