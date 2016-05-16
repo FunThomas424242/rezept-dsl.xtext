@@ -5,6 +5,7 @@
 * issue #4 behoben -> Parts mit Bildern, Zitaten und Texten
 * issue #8 behoben -> Details der Kapitel werden ausgegeben
 * issue #2 behoben -> Details werden generiert und Stück wird weggelassen.
+* issue #7 behoben -> Branding eingearbeitet
 
 
 
