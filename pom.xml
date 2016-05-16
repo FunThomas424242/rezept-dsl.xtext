@@ -5,14 +5,14 @@
 
 	<groupId>com.github.funthomas424242</groupId>
 	<artifactId>rezept.parent</artifactId>
-	<version>2.1.0-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Rezept - Parent</name>
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 
 
 	<properties>
-		<newVersion>2.1.0-SNAPSHOT</newVersion>
+		<newVersion>3.0.0-SNAPSHOT</newVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<settings.servers.server.id>bintray-snapshots</settings.servers.server.id>

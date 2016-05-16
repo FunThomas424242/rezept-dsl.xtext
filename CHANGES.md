@@ -1,4 +1,4 @@
-# 2.0.1
+# 3.0.0 (3.0.0-SNAPSHOT, 2.1.0-SNAPSHOT, 2.0.1-SNAPSHOT)
 
 * issue #6 umgestellt auf separate Konfigurationen
 * umgestellt auf Generierung von epub3 Format
