@@ -2,7 +2,8 @@
 <feature
       id="rezept.sdk"
       label="Rezept SDK Feature "
-      version="3.0.0.qualifier">
+      version="3.0.0.qualifier"
+      plugin="rezept">
 
    <description>
       Rezept ist eine DSL zur Beschreibung von Kochrezepten und -büchern.
@@ -524,6 +525,10 @@ necessary.  Here is a sample; alter the names:
 
 That&apos;s all there is to it!
    </license>
+
+   <url>
+      <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/rezept.updatesite/3.0.0/rezept.updatesite-3.0.0.zip!/"/>
+   </url>
 
    <plugin
          id="rezept"
