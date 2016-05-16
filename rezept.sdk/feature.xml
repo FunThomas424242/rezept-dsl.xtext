@@ -3,6 +3,7 @@
       id="rezept.sdk"
       label="Rezept SDK Feature "
       version="3.1.0.qualifier"
+      provider-name="FunThomas424242 (Thomas Schubert)"
       plugin="rezept">
 
    <description>
@@ -528,6 +529,7 @@ That&apos;s all there is to it!
 
    <url>
       <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/rezept.updatesite/3.1.0/rezept.updatesite-3.1.0.zip!/"/>
+      <discovery label="Bintray Rezept 3.0.0-RELEASE" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/rezept.updatesite/3.0.0/rezept.updatesite-3.0.0.zip!/"/>
    </url>
 
    <plugin
