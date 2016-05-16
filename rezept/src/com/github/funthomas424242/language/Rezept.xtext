@@ -188,7 +188,7 @@ RezeptbuchProjekt:
  ;
  
  BestimmteMenge:
- 	'Menge:' betrag=Float details=STRING? einheit=Masseinheit?'.'
+ 	'Menge:' betrag=Float (details=STRING? einheit=Masseinheit)?'.'
  ;
  
  UnbestimmteMenge:

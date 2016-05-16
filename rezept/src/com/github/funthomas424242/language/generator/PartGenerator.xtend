@@ -131,7 +131,8 @@ class PartGenerator {
 «IF zutat.menge instanceof BestimmteMenge» 
 	«val menge = zutat.menge as BestimmteMenge»
 		«Helper.stripQuotes(menge.betrag)»
-		«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
+		«menge.details»
+		«IF menge.einheit != Masseinheit.KEINEAUSWAHL && menge.einheit != Masseinheit.STUECK»
 			«menge.einheit»
 		«ENDIF»
 «ENDIF»
