@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/rezept.sdk_0.0.0.jar" id="com.github.funthomas424242.rezept.sdk" version="0.0.0">
-      <category name="DSLs"/>
-   </feature>
-   <category-def name="DSLs" label="Rezept DSL Language"/>
-</site>
