@@ -1,3 +1,8 @@
+# 3.1.0 
+
+* issue #10 behoben, plugin ids korrigiert
+* issue #7 branding hinzugefügt
+
 # 3.0.0 (3.0.0-SNAPSHOT, 2.1.0-SNAPSHOT, 2.0.1-SNAPSHOT)
 
 * issue #6 umgestellt auf separate Konfigurationen
