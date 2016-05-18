@@ -3,6 +3,7 @@ package com.github.funthomas424242.dsl.generator
 import com.github.funthomas424242.dsl.rezept.RezeptbuchProjekt
 import com.github.funthomas424242.dsl.rezept.Rezeptdatei
 import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.dsl.rezept.BuchBeschreibung
 
 /**
  * Generates code from your model files on save.
@@ -11,13 +12,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  */
 class BookGenerator {
 
-	def static createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project) '''
-		<?xml version="1.0" encoding="UTF-8"?>
-		<book version="5.0"
-			  lang="de" 
-			     xmlns="http://docbook.org/ns/docbook"
-			     xmlns:xlink="http://www.w3.org/1999/xlink"
-			     xmlns:xi="http://www.w3.org/2001/XInclude">
+	def static CharSequence createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project) '''
+		
+		«createXmlHeader»
 		
 		<info>
 		    <title>«project.buch.titel»</title>
@@ -46,24 +43,8 @@ class BookGenerator {
 				<legalnotice><para>«project.buch.lizenz.hinweis»</para></legalnotice>
 			«ENDIF» 	
 		</info>
-		«IF project.buch.vorwort != null»	
-			<preface>
-				<title>Vorwort</title>
-			
-			    <para>«project.buch.vorwort»</para>
-			
-					«IF project.buch.absatz != null»
-						«FOR absatz : project.buch.absatz»
-							«IF absatz.titel!=null»
-								<para>«absatz.text»</para>
-							«ELSE»
-								<formalpara><title>«absatz.titel»</title>
-								<para>«absatz.text»</para>
-								</formalpara>
-							«ENDIF»
-						«ENDFOR»			
-					«ENDIF»
-			</preface>
+		«IF project.buch.vorwort != null»
+			«createVorwort(project.buch)»	
 		«ENDIF»
 		
 		<toc/>
@@ -75,6 +56,37 @@ class BookGenerator {
 		«ENDFOR»
 		
 		«AnhangLizenzGenerator.createLizenzAnhang(fsa,project)»
+		
+	'''
+	
+	def static createXmlHeader() '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<book version="5.0"
+			  lang="de" 
+			     xmlns="http://docbook.org/ns/docbook"
+			     xmlns:xlink="http://www.w3.org/1999/xlink"
+			     xmlns:xi="http://www.w3.org/2001/XInclude">	
+
+	'''
+	
+	def static createVorwort(BuchBeschreibung buch) '''
+		<preface>
+			<title>Vorwort</title>
+		
+		    <para>«buch.vorwort»</para>
+		
+				«IF buch.absatz != null»
+					«FOR absatz : buch.absatz»
+						«IF absatz.titel != null»
+							<para>«absatz.text»</para>
+						«ELSE»
+							<formalpara><title>«absatz.titel»</title>
+							<para>«absatz.text»</para>
+							</formalpara>
+						«ENDIF»
+					«ENDFOR»			
+				«ENDIF»
+		</preface>
 	'''
 
 }
