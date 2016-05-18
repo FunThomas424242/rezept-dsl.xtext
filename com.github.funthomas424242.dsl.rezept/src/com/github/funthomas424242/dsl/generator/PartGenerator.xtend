@@ -22,7 +22,8 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  */
 class PartGenerator {
 
-	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste, int parentIndex) '''		
+	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste, int parentIndex) 
+'''		
 		<part>
 		    <title>«liste.name»</title>
 		    
@@ -195,7 +196,7 @@ class PartGenerator {
 			«ENDIF»
 			«produktRef.produkt.name» 
 			«IF produktRef.produkt.menge instanceof BestimmteMenge»
-				«val menge = produktRef.produkt.menge as BestimmteMenge»
+				«val menge = produktRef.produkt.menge»
 				«Helper.stripQuotes(menge.betrag)» 
 				«IF menge.einheit != Masseinheit.KEINEAUSWAHL»
 					«menge.einheit»
