@@ -22,8 +22,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  */
 class PartGenerator {
 
-	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste,
-		int parentIndex) '''		
+	def static createPart(IFileSystemAccess fsa, RezeptbuchProjekt project, Rezeptliste liste, int parentIndex) '''		
 		<part>
 		    <title>«liste.name»</title>
 		    
@@ -259,6 +258,6 @@ class PartGenerator {
 «ENDIF»
 
 </chapter>
-	'''
+'''
 
 }
