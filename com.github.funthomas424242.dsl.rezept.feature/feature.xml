@@ -6,7 +6,7 @@
       provider-name="FunThomas424242 (Thomas Schubert)"
       plugin="com.github.funthomas424242.dsl.rezept">
 
-  <description>
+   <description>
       Rezept ist eine DSL zur Beschreibung von Kochrezepten und -büchern.
 Die Software kann als Plugin in Eclipse (Softwareentwicklungsumgebung) installiert werden. 
 Dort stellt sie einen Editor zur Bearbeitung der Sprache Rezept und einen Generator zur Erzeugung von Docbook Projektdateien bereit. Die generierten Projekte nutzen Maven als Build Werkzeug und können die modellierten Rezepte in diversen Ausgabeformaten zur Verfügung stellen.
@@ -541,6 +541,13 @@ That&apos;s all there is to it!
 
    <plugin
          id="com.github.funthomas424242.dsl.rezept.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.github.funthomas424242.dsl.rezept.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"
