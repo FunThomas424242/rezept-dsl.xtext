@@ -14,7 +14,7 @@ class BookGenerator {
 
 	def static CharSequence createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project)	'''
 <?xml version="1.0" encoding="UTF-8"?>
-	«createXmlHeader»
+	«createXmlHeader()»
 		
 		<info>
 		    <title>«project.buch.titel»</title>
