@@ -12,8 +12,9 @@ import com.github.funthomas424242.dsl.rezept.BuchBeschreibung
  */
 class BookGenerator {
 
-	def static CharSequence createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project) '''
-		«createXmlHeader»
+	def static CharSequence createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project)	'''
+<?xml version="1.0" encoding="UTF-8"?>
+	«createXmlHeader»
 		
 		<info>
 		    <title>«project.buch.titel»</title>
@@ -59,7 +60,6 @@ class BookGenerator {
 	'''
 	
 	def static createXmlHeader() '''
-	<?xml version="1.0" encoding="UTF-8"?>
 	<book version="5.0"
 		  lang="de" 
 		     xmlns="http://docbook.org/ns/docbook"
