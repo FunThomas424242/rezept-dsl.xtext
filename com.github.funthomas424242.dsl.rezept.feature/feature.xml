@@ -2,7 +2,7 @@
 <feature
       id="com.github.funthomas424242.dsl.rezept.feature"
       label="Rezept Feature"
-      version="3.0.1.qualifier"
+      version="3.0.1"
       provider-name="FunThomas424242 (Thomas Schubert)"
       plugin="com.github.funthomas424242.dsl.rezept">
 
@@ -528,8 +528,8 @@ That&apos;s all there is to it!
    </license>
 
    <url>
-      <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/rezept.updatesite/3.1.0/rezept.updatesite-3.1.0.zip!/"/>
-      <discovery label="Bintray Rezept 3.0.0-RELEASE" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/rezept.updatesite/3.0.0/rezept.updatesite-3.0.0.zip!/"/>
+      <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.1/com.github.funthomas424242.dsl.rezept.site-3.0.1.zip!/"/>
+      <discovery label="Bintray Rezept 3.0.1-RELEASE" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.1/com.github.funthomas424242.dsl.rezept.site-3.0.1.zip!/"/>
    </url>
 
    <plugin
