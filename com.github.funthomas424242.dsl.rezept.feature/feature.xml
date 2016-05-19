@@ -2,7 +2,7 @@
 <feature
       id="com.github.funthomas424242.dsl.rezept.feature"
       label="Rezept Feature"
-      version="3.0.2"
+      version="3.0.3.qualifier"
       provider-name="FunThomas424242 (Thomas Schubert)"
       plugin="com.github.funthomas424242.dsl.rezept">
 

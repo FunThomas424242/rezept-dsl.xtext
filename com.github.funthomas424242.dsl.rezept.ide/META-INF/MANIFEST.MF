@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rezept IDE Plugin
 Bundle-Vendor: FunThomas424242 (Thomas Schubert)
-Bundle-Version: 3.0.2
+Bundle-Version: 3.0.3.qualifier
 Bundle-SymbolicName: com.github.funthomas424242.dsl.rezept.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.github.funthomas424242.dsl.rezept,

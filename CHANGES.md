@@ -1,3 +1,7 @@
+# 3.0.2
+
+* issue 11 behoben, Leerzeile am Anfang von book.dbk entfernt 
+
 # 3.0.1 
 
 * issue #10 behoben, plugin ids korrigiert
