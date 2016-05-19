@@ -13,7 +13,6 @@ import com.github.funthomas424242.dsl.rezept.BuchBeschreibung
 class BookGenerator {
 
 	def static CharSequence createBookContent(IFileSystemAccess fsa, RezeptbuchProjekt project) '''
-		
 		«createXmlHeader»
 		
 		<info>
@@ -60,12 +59,12 @@ class BookGenerator {
 	'''
 	
 	def static createXmlHeader() '''
-		<?xml version="1.0" encoding="UTF-8"?>
-		<book version="5.0"
-			  lang="de" 
-			     xmlns="http://docbook.org/ns/docbook"
-			     xmlns:xlink="http://www.w3.org/1999/xlink"
-			     xmlns:xi="http://www.w3.org/2001/XInclude">	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<book version="5.0"
+		  lang="de" 
+		     xmlns="http://docbook.org/ns/docbook"
+		     xmlns:xlink="http://www.w3.org/1999/xlink"
+		     xmlns:xi="http://www.w3.org/2001/XInclude">	
 
 	'''
 	
