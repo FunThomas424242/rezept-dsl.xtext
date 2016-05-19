@@ -528,8 +528,8 @@ That&apos;s all there is to it!
    </license>
 
    <url>
-      <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.1/com.github.funthomas424242.dsl.rezept.site-3.0.1.zip!/"/>
-      <discovery label="Bintray Rezept 3.0.1-RELEASE" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.1/com.github.funthomas424242.dsl.rezept.site-3.0.1.zip!/"/>
+      <update label="Bintray Rezept" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.2/com.github.funthomas424242.dsl.rezept.site-3.0.2.zip!/"/>
+      <discovery label="Bintray Rezept 3.0.2-RELEASE" url="jar:https://bintray.com/funthomas424242/eclipse-features/download_file?file_path=com/github/funthomas424242/com.github.funthomas424242.dsl.rezept.site/3.0.2/com.github.funthomas424242.dsl.rezept.site-3.0.2.zip!/"/>
    </url>
 
    <plugin
