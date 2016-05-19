@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rezept UI Plugin
 Bundle-Vendor: FunThomas424242 (Thomas Schubert)
-Bundle-Version: 3.1.0.qualifier
+Bundle-Version: 3.0.1.qualifier
 Bundle-SymbolicName: com.github.funthomas424242.dsl.rezept.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.github.funthomas424242.dsl.rezept,

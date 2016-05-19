@@ -1,4 +1,4 @@
-# 3.1.0 
+# 3.0.1 
 
 * issue #10 behoben, plugin ids korrigiert
 * issue #7 branding hinzugefügt
