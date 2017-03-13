@@ -38,7 +38,7 @@ class BookGenerator {
 			«ENDFOR»
 			</authorgroup>
 		
-			<pubdate>«project.buch.datumPublished»</pubdate>
+			<pubdate>«Helper.convertDateToDefaultLocale(project.buch.datumPublished)»</pubdate>
 			«IF project.buch.lizenz!=null»
 				<legalnotice><para>«project.buch.lizenz.hinweis»</para></legalnotice>
 			«ENDIF» 	
