@@ -101,6 +101,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//ProduktBlatt/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//ProduktBlatt/verpackung"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rezept.ecore#//ProduktBlatt/menge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//ProduktBlatt/smartPoints"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//ProduktBlatt/ean"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//ProduktBlatt/uba"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rezept.ecore#//ProduktBlatt/preis"/>
@@ -177,6 +178,7 @@
     <genClasses ecoreClass="Rezept.ecore#//Zutat">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Zutat/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Rezept.ecore#//Zutat/menge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Zutat/smartPoints"/>
     </genClasses>
     <genClasses ecoreClass="Rezept.ecore#//Menge"/>
     <genClasses ecoreClass="Rezept.ecore#//BestimmteMenge">
