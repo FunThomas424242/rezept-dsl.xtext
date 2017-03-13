@@ -140,6 +140,9 @@ class PartGenerator {
 		«menge.menge»
 	«ENDIF»
 «ENDIF»
+«IF zutat.smartPoints != 0»
+	«zutat.smartPoints» <abbrev>WSP <alt>WeightWatcher Smart Points</alt></abbrev>
+«ENDIF»
 	</para>
 	    </listitem>
 «ENDFOR»  

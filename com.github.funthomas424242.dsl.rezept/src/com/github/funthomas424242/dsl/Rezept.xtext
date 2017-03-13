@@ -65,7 +65,7 @@ RezeptbuchProjekt:
  	{ProduktBlatt}
  	'Produkt' name=STRING 	'{'
 		 ('Verpackung:' verpackung=Verpackung '.')?
-		 menge=BestimmteMenge
+		 menge=BestimmteMenge (', SmartPoints:' smartPoints=INT)? '.'
 		 ('EAN:' ean=STRING '.')?
 		 ('UBA:' uba=STRING '.')?
 		 preis=Preis?
@@ -180,7 +180,7 @@ RezeptbuchProjekt:
  ;
  
  Zutat:
- 	'Zutat:' name=STRING menge=Menge 
+ 	'Zutat:' name=STRING menge=Menge (', SmartPoints:' smartPoints=INT )? '.'
  ;
  
  Menge:
@@ -188,11 +188,11 @@ RezeptbuchProjekt:
  ;
  
  BestimmteMenge:
- 	'Menge:' betrag=Float (details=STRING? einheit=Masseinheit)?'.'
+ 	'Menge:' betrag=Float (details=STRING? einheit=Masseinheit)?
  ;
  
  UnbestimmteMenge:
- 	menge=UnbestimmteMengenangabe '.'
+ 	menge=UnbestimmteMengenangabe
  ;
 
  Quelle:
