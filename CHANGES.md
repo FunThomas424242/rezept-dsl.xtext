@@ -1,3 +1,7 @@
+# 3.0.3
+
+* WeightWatchers Smart Points sind jetzt erfassbar.
+
 # 3.0.2
 
 * issue 11 behoben, Leerzeile am Anfang von book.dbk entfernt 
