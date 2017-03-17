@@ -103,6 +103,7 @@ RezeptbuchProjekt:
 	 	'Letzte Änderung:' letzteAenderung=DATUM '.'
 	 	(tags+=Tag)+
 	 	(produkte+=ProduktRef)*
+	 	(hasBrennwert="Brennwert pro Portion" brennwert=INT "WSP.")?
 	 	(zutaten+=Zutat)+
 	 	(schritte+=Arbeitsschritt)+
 	 	('--Zusatzinformationen--'
@@ -180,7 +181,7 @@ RezeptbuchProjekt:
  ;
  
  Zutat:
- 	'Zutat:' name=STRING menge=Menge (', SmartPoints:' smartPoints=INT )? '.'
+ 	'Zutat:' name=STRING menge=Menge ( hasSmartPoints=', SmartPoints:' smartPoints=INT )? '.'
  ;
  
  Menge:

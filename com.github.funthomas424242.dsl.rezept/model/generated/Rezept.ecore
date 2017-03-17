@@ -105,6 +105,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="produkte" upperBound="-1"
         eType="#//ProduktRef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasBrennwert" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="brennwert" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="zutaten" upperBound="-1"
         eType="#//Zutat" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schritte" upperBound="-1"
@@ -156,6 +158,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="menge" eType="#//Menge"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasSmartPoints" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="smartPoints" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Menge"/>

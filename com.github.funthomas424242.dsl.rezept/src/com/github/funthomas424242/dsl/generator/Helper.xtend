@@ -51,4 +51,14 @@ class Helper {
 		return (yyyy + '-' + mm + '-' + dd)
 	}
 	
+	def static String getSimpleName( String fullqualifiedName ){
+		if (fullqualifiedName == null){
+			return "";
+		}
+		if ( !fullqualifiedName.contains('.') ){
+			return fullqualifiedName;
+		}
+		return fullqualifiedName.substring(fullqualifiedName.indexOf('.')+1);
+	}
+	
 }
