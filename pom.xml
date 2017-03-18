@@ -19,7 +19,6 @@
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<settings.servers.server.id>bintray-funthomas424242-releases</settings.servers.server.id>
 		<settings.servers.server.username>funthomas424242</settings.servers.server.username>
-		<!-- <settings.servers.server.password></settings.servers.server.password> -->
 	</properties>
 
 	<scm>
