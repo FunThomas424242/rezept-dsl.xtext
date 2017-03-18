@@ -107,7 +107,12 @@ class PartGenerator {
 			«ELSE»
 				«IF rezept.quelle instanceof Literaturquelle»
 					«val literaturQuelle = rezept.quelle as Literaturquelle»
-					«literaturQuelle.modifikation» übernommen aus: «literaturQuelle.beschreibung»
+					«literaturQuelle.modifikation» 
+					«IF literaturQuelle.url != null»
+						übernommen von: <link xlink:href="«literaturQuelle.url»" xlink:show="new"/>
+					«ELSE»
+						übernommen aus: «literaturQuelle.beschreibung»
+					«ENDIF»
 				«ENDIF»
 				«IF rezept.quelle instanceof Personenquelle»
 					«val personenQuelle = rezept.quelle as Personenquelle»

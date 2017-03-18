@@ -174,6 +174,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Literaturquelle" eSuperTypes="#//Quelle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifikation" eType="#//Modifikationsart"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beschreibung" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Personenquelle" eSuperTypes="#//Quelle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="personenBeschreibung" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -189,8 +190,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="diaet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Modifikationsart">
-    <eLiterals name="MODIFIZIERT" literal="&quot;verändert&quot;"/>
-    <eLiterals name="UNVERAENDERT" value="1" literal="&quot;unverändert&quot;"/>
+    <eLiterals name="MODIFIZIERT" literal="verändert"/>
+    <eLiterals name="UNVERAENDERT" value="1" literal="unverändert"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Masseinheit">
     <eLiterals name="KEINEAUSWAHL" literal="keine Auswahl"/>
