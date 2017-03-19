@@ -196,6 +196,7 @@
     <genClasses ecoreClass="Rezept.ecore#//Literaturquelle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Literaturquelle/modifikation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Literaturquelle/beschreibung"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Literaturquelle/url"/>
     </genClasses>
     <genClasses ecoreClass="Rezept.ecore#//Personenquelle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Rezept.ecore#//Personenquelle/personenBeschreibung"/>

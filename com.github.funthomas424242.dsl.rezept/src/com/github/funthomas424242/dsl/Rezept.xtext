@@ -201,7 +201,7 @@ RezeptbuchProjekt:
  ;
  
  Literaturquelle:
- 	'übernommen' modifikation=Modifikationsart 'aus' beschreibung=STRING '.'
+ 	'übernommen' modifikation=Modifikationsart (('aus' beschreibung=STRING)|('von' url=STRING))  '.'
  ;
  
  
@@ -231,7 +231,7 @@ RezeptbuchProjekt:
  ;
  
  enum Modifikationsart:
- 	MODIFIZIERT='"verändert"' | UNVERAENDERT='"unverändert"'
+ 	MODIFIZIERT='verändert' | UNVERAENDERT='unverändert'
  ;
  
  enum Masseinheit:

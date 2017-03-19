@@ -1,7 +1,13 @@
+# 3.0.5
+
+* URL Support für Quellen aufgenommen.
+* Generator Hinweis hinzugefügt. 
+
+
 # 3.0.4
 
-* Klammerung der WSPs
-* Nährwertangaben aufgenommen 
+* Klammerung der WSPs ermöglicht.
+* Nährwertangaben aufgenommen.
 
 # 3.0.3
 
@@ -9,21 +15,21 @@
 
 # 3.0.2
 
-* issue 11 behoben, Leerzeile am Anfang von book.dbk entfernt 
+* issue 11 behoben, Leerzeile am Anfang von book.dbk entfernt.
 
 # 3.0.1 
 
-* issue #10 behoben, plugin ids korrigiert
-* issue #7 branding hinzugefügt
+* issue #10 behoben, plugin ids korrigiert.
+* issue #7 branding hinzugefügt.
 
 # 3.0.0 (3.0.0-SNAPSHOT, 2.1.0-SNAPSHOT, 2.0.1-SNAPSHOT)
 
-* issue #6 umgestellt auf separate Konfigurationen
-* umgestellt auf Generierung von epub3 Format
-* issue #4 behoben -> Parts mit Bildern, Zitaten und Texten
-* issue #8 behoben -> Details der Kapitel werden ausgegeben
+* issue #6 umgestellt auf separate Konfigurationen.
+* umgestellt auf Generierung von epub3 Format.
+* issue #4 behoben -> Parts mit Bildern, Zitaten und Texten.
+* issue #8 behoben -> Details der Kapitel werden ausgegeben.
 * issue #2 behoben -> Details werden generiert und Stück wird weggelassen.
-* issue #7 behoben -> Branding eingearbeitet
+* issue #7 behoben -> Branding eingearbeitet.
 
 
 
