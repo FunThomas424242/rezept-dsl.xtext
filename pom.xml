@@ -2,14 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.funthomas424242</groupId>
-	<version>3.0.4</version>
+	<version>3.0.5</version>
 	<artifactId>com.github.funthomas424242.dsl.rezept.parent</artifactId>
 	<packaging>pom</packaging>
 	<name>Rezept - Parent</name>
 	<url>https://github.com/FunThomas424242/rezept-dsl.xtext</url>
 
 	<properties>
-		<newVersion>3.0.4</newVersion>
+		<newVersion>3.0.5</newVersion>
 		<tycho-version>0.25.0</tycho-version>
 		<xtextVersion>2.9.2</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
