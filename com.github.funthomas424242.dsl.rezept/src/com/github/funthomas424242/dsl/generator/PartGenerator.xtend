@@ -14,6 +14,7 @@ import com.github.funthomas424242.dsl.rezept.UnbestimmteMenge
 import com.github.funthomas424242.dsl.rezept.UnbestimmteMengenangabe
 import com.github.funthomas424242.dsl.rezept.Verpackung
 import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.dsl.rezept.Zutat
 
 /**
  * Generates code from your model files on save.
@@ -118,11 +119,22 @@ class PartGenerator {
 		  </variablelist>
 </para>
 
+«IF rezept.hasBrennwert != null»
+<formalpara>
+	<title>Brennwert</title>
+
+    <para>
+    1 Portion/Teller entspricht «rezept.brennwert» WSP (Weight Watcher Smart Points).
+    </para>
+</formalpara>
+«ENDIF»
+
 <formalpara>
 	<title>Zutaten</title>
 
     <para><itemizedlist>
-    «FOR zutat : rezept.zutaten»
+    «FOR Zutat zutat : rezept.zutaten»
+	
 	<listitem>
 	    <para>
 «IF zutat.menge instanceof BestimmteMenge» 
@@ -133,15 +145,17 @@ class PartGenerator {
 			«menge.einheit»
 		«ENDIF»
 «ENDIF»
-«zutat.name»
+«Helper.getSimpleName(zutat.name)»
 «IF zutat.menge instanceof UnbestimmteMenge»
 	«val menge = zutat.menge as UnbestimmteMenge»	
 	«IF menge.menge != UnbestimmteMengenangabe.KEINEAUSWAHL»          		
 		«menge.menge»
 	«ENDIF»
 «ENDIF»
-«IF zutat.smartPoints != 0»
-	«zutat.smartPoints» <abbrev>WSP <alt>WeightWatcher Smart Points</alt></abbrev>
+«IF zutat.hasSmartPoints != null»
+
+	(«zutat.smartPoints» <abbrev>WSP<alt>Weight Watcher Smart Points</alt></abbrev>)
+	
 «ENDIF»
 	</para>
 	    </listitem>

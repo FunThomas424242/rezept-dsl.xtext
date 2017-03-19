@@ -1,3 +1,8 @@
+# 3.0.4
+
+* Klammerung der WSPs
+* Nährwertangaben aufgenommen 
+
 # 3.0.3
 
 * WeightWatchers Smart Points sind jetzt erfassbar.
