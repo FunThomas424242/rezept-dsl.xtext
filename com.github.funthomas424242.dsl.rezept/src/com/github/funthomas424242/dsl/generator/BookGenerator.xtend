@@ -39,9 +39,12 @@ class BookGenerator {
 			</authorgroup>
 		
 			<pubdate>«Helper.convertDateToDefaultLocale(project.buch.datumPublished)»</pubdate>
+			<legalnotice>
 			«IF project.buch.lizenz!=null»
-				<legalnotice><para>«project.buch.lizenz.hinweis»</para></legalnotice>
-			«ENDIF» 	
+				<para>«project.buch.lizenz.hinweis»</para>
+			«ENDIF» 
+				<para>Das Dokument wurde geschrieben in der Sprache rezept und generiert mittels xtext/xtend.</para>	
+			</legalnotice>
 		</info>
 		«IF project.buch.vorwort != null»
 			«createVorwort(project.buch)»	
